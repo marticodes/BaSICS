@@ -1,4 +1,4 @@
-import rawData from './data.json'
+import rawData from '../../data.json'
 import type { Tool, ToolRaw } from '../types'
 
 const UNKNOWN = 'Unknown'
