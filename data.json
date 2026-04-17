@@ -9,7 +9,7 @@
     "Target": "User",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/impose-battle-xp-reduction.jpg"
+    "imageUrl": "/images/tools/impose battle.png"
   },
   {
     "Name": "View as",
@@ -21,7 +21,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/view-as.jpg"
+    "imageUrl": "/images/tools/view as.png"
   },
   {
     "Name": "Staff chat",
@@ -33,7 +33,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/staff-chat.jpg"
+    "imageUrl": "/images/tools/staff chat.png"
   },
   {
     "Name": "Delayed invitation entry point",
@@ -45,7 +45,7 @@
     "Target": "User",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/delayed-invitation-entry-point.jpg"
+    "imageUrl": "/images/tools/delayed invitation.png"
   },
   {
     "Name": "Favourites in feed preference",
@@ -57,7 +57,7 @@
     "Target": "Feed",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/favourites-in-feed-preference.jpg"
+    "imageUrl": "/images/tools/favourites in feed.png"
   },
   {
     "Name": "Delete content",
@@ -69,7 +69,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/delete-content.jpg"
+    "imageUrl": "/images/tools/delete content.png"
   },
   {
     "Name": "Limit unwanted interactions",
@@ -81,7 +81,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/limit-unwanted-interactions.jpg"
+    "imageUrl": "/images/tools/limit unwanted.png"
   },
   {
     "Name": "Ignore bubble",
@@ -93,7 +93,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/ignore-bubble.jpg"
+    "imageUrl": "/images/tools/ignore bubble.png"
   },
   {
     "Name": "User flairs",
@@ -105,7 +105,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/user-flairs.jpg"
+    "imageUrl": "/images/tools/user flairs.png"
   },
   {
     "Name": "Limit supporter payments",
@@ -117,7 +117,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/limit-supporter-payments.jpg"
+    "imageUrl": "/images/tools/limit supporter.png"
   },
   {
     "Name": "Check IP address",
@@ -129,7 +129,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/check-ip-address.jpg"
+    "imageUrl": "/images/tools/check ip.png"
   },
   {
     "Name": "Block suspected spam content",
@@ -141,7 +141,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/block-suspected-spam-content.jpg"
+    "imageUrl": "/images/tools/block sus spam.png"
   },
   {
     "Name": "Check ban",
@@ -153,7 +153,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/check-ban.jpg"
+    "imageUrl": "/images/tools/check ban.png"
   },
   {
     "Name": "Content location",
@@ -165,7 +165,7 @@
     "Target": "Content",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/content-location.jpg"
+    "imageUrl": "/images/tools/content location.png"
   },
   {
     "Name": "Oversight",
@@ -177,7 +177,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/oversight.jpg"
+    "imageUrl": "/images/tools/oversight.png"
   },
   {
     "Name": "Freeze a player",
@@ -189,7 +189,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/freeze-a-player.jpg"
+    "imageUrl": "/images/tools/freeze a player.png"
   },
   {
     "Name": "Read receipts",
@@ -201,7 +201,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/read-receipts.jpg"
+    "imageUrl": "/images/tools/read receipts.png"
   },
   {
     "Name": "Block custom words",
@@ -213,7 +213,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/block-custom-words.jpg"
+    "imageUrl": "/images/tools/block custom words.png"
   },
   {
     "Name": "Show liked content",
@@ -225,7 +225,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/show-liked-content.jpg"
+    "imageUrl": "/images/tools/show liked content.jpeg"
   },
   {
     "Name": "Obscure filtered keywords",
@@ -237,7 +237,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/obscure-filtered-keywords.jpg"
+    "imageUrl": "/images/tools/obscure filtered.png"
   },
   {
     "Name": "Display recently streamed categories",
@@ -249,7 +249,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/display-recently-streamed-categories.jpg"
+    "imageUrl": "/images/tools/display recently.png"
   },
   {
     "Name": "Shield mode",
@@ -261,7 +261,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/shield-mode.jpg"
+    "imageUrl": "/images/tools/shield mode.png"
   },
   {
     "Name": "Allow podcasting",
@@ -273,7 +273,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/allow-podcasting.jpg"
+    "imageUrl": "/images/tools/Allow podcasting.png"
   },
   {
     "Name": "Share user status",
@@ -285,7 +285,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/share-user-status.jpg"
+    "imageUrl": "/images/tools/share user status.png"
   },
   {
     "Name": "Avoid contacts/people you know",
@@ -297,7 +297,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/avoid-contacts-people-you-know.jpg"
+    "imageUrl": "/images/tools/avoid contacts people.jpeg"
   },
   {
     "Name": "Vote kick",
@@ -309,7 +309,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/vote-kick.jpg"
+    "imageUrl": "/images/tools/vote kick.png"
   },
   {
     "Name": "Timeout",
@@ -321,7 +321,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/timeout.jpg"
+    "imageUrl": "/images/tools/timeout.png"
   },
   {
     "Name": "Kick all",
@@ -333,7 +333,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/kick-all.jpg"
+    "imageUrl": "/images/tools/kick all.png"
   },
   {
     "Name": "Honor lock",
@@ -345,7 +345,7 @@
     "Target": "User",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/honor-lock.jpg"
+    "imageUrl": "/images/tools/honor lock.png"
   },
   {
     "Name": "Pin",
@@ -357,7 +357,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users, Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/pin.jpg"
+    "imageUrl": "/images/tools/pin.png"
   },
   {
     "Name": "Reach out for help while live streaming",
@@ -369,7 +369,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/reach-out-for-help-while-live-streaming.jpg"
+    "imageUrl": "/images/tools/reach out for help.png"
   },
   {
     "Name": "Vandalism checker",
@@ -381,7 +381,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/vandalism-checker.jpg"
+    "imageUrl": "/images/tools/vandalism checker.png"
   },
   {
     "Name": "Clip sharing on stories",
@@ -393,7 +393,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/clip-sharing-on-stories.jpg"
+    "imageUrl": "/images/tools/clip sharing.png"
   },
   {
     "Name": "Remove last warning",
@@ -405,7 +405,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/remove-last-warning.jpg"
+    "imageUrl": "/images/tools/remove last warning.png"
   },
   {
     "Name": "History of a player",
@@ -417,7 +417,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/history-of-a-player.jpg"
+    "imageUrl": "/images/tools/history player.png"
   },
   {
     "Name": "Enable slash commands",
@@ -429,7 +429,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/enable-slash-commands.jpg"
+    "imageUrl": "/images/tools/enable slash commands.png"
   },
   {
     "Name": "Represent company",
@@ -441,7 +441,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/represent-company.jpg"
+    "imageUrl": "/images/tools/represent company.png"
   },
   {
     "Name": "Inferred identity",
@@ -453,7 +453,7 @@
     "Target": "Content",
     "Tool Accessibility": "Platform, Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/inferred-identity.jpg"
+    "imageUrl": "/images/tools/inferred identity.png"
   },
   {
     "Name": "Reply filters",
@@ -465,7 +465,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/reply-filters.jpg"
+    "imageUrl": "/images/tools/reply filters.png"
   },
   {
     "Name": "Label AI-generated content",
@@ -477,7 +477,7 @@
     "Target": "Content",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/label-ai-generated-content.jpg"
+    "imageUrl": "/images/tools/label ai.png"
   },
   {
     "Name": "Sort comments",
@@ -489,7 +489,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/sort-comments.jpg"
+    "imageUrl": "/images/tools/sort comments.png"
   },
   {
     "Name": "AFK status",
@@ -501,7 +501,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/afk-status.jpg"
+    "imageUrl": "/images/tools/AFK status.png"
   },
   {
     "Name": "Usage limit in text",
@@ -513,7 +513,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/usage-limit-in-text.jpg"
+    "imageUrl": "/images/tools/usage limit in text.png"
   },
   {
     "Name": "Tribunal",
@@ -525,7 +525,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/tribunal.jpg"
+    "imageUrl": "/images/tools/tribunal.png"
   },
   {
     "Name": "Hide like/reaction count",
@@ -537,7 +537,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/hide-like-reaction-count.jpg"
+    "imageUrl": "/images/tools/hide like reaction count.png"
   },
   {
     "Name": "Death to comments",
@@ -549,7 +549,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/death-to-comments.jpg"
+    "imageUrl": "/images/tools/death to comments.png"
   },
   {
     "Name": "Disappearing messages timer",
@@ -561,7 +561,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/disappearing-messages-timer.jpg"
+    "imageUrl": "/images/tools/disappearing messages.jpeg"
   },
   {
     "Name": "Auto mute",
@@ -573,7 +573,7 @@
     "Target": "Content",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/auto-mute.jpg"
+    "imageUrl": "/images/tools/Auto mute.png"
   },
   {
     "Name": "Shopping recommendations",
@@ -585,7 +585,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/shopping-recommendations.jpg"
+    "imageUrl": "/images/tools/shopping recommendations.png"
   },
   {
     "Name": "Hide content that contains keywords",
@@ -597,7 +597,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/hide-content-that-contains-keywords.jpg"
+    "imageUrl": "/images/tools/hide content that.png"
   },
   {
     "Name": "Queue delays",
@@ -609,7 +609,7 @@
     "Target": "User",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/queue-delays.jpg"
+    "imageUrl": "/images/tools/queue delays.png"
   },
   {
     "Name": "Staff rollback",
@@ -621,7 +621,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/staff-rollback.jpg"
+    "imageUrl": "/images/tools/staff rollback.png"
   },
   {
     "Name": "Account search privacy",
@@ -633,7 +633,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/account-search-privacy.jpg"
+    "imageUrl": "/images/tools/account search privacy.png"
   },
   {
     "Name": "Chat tickets",
@@ -645,7 +645,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/chat-tickets.jpg"
+    "imageUrl": "/images/tools/chat ticket.png"
   },
   {
     "Name": "Restricted features until purchase",
@@ -657,7 +657,7 @@
     "Target": "User",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/restricted-features-until-purchase.jpg"
+    "imageUrl": "/images/tools/restricted features.png"
   },
   {
     "Name": "Exclude content from your interests profile",
@@ -669,7 +669,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/exclude-content-from-your-interests-profile.jpg"
+    "imageUrl": "/images/tools/exclude content from.png"
   },
   {
     "Name": "Arrange DMs",
@@ -681,7 +681,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/arrange-dms.jpg"
+    "imageUrl": "/images/tools/Arrange Dms.png"
   },
   {
     "Name": "Restrict user",
@@ -693,7 +693,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/restrict-user.jpg"
+    "imageUrl": "/images/tools/restrict user.png"
   },
   {
     "Name": "Hold messages until a mod reviews",
@@ -705,7 +705,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/hold-messages-until-a-mod-reviews.jpg"
+    "imageUrl": "/images/tools/hold messages.png"
   },
   {
     "Name": "Manage friend requests",
@@ -717,7 +717,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/manage-friend-requests.jpg"
+    "imageUrl": "/images/tools/friends requests.png"
   },
   {
     "Name": "Kick",
@@ -729,7 +729,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/kick.jpg"
+    "imageUrl": "/images/tools/kick.png"
   },
   {
     "Name": "Unlock pattern",
@@ -741,7 +741,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/unlock-pattern.jpg"
+    "imageUrl": "/images/tools/unlock pattern.png"
   },
   {
     "Name": "Personalised ads",
@@ -753,7 +753,7 @@
     "Target": "Feed",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/personalised-ads.jpg"
+    "imageUrl": "/images/tools/personalised ads.png"
   },
   {
     "Name": "Range ban",
@@ -765,7 +765,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/range-ban.jpg"
+    "imageUrl": "/images/tools/range ban.png"
   },
   {
     "Name": "Disable the chat",
@@ -777,7 +777,7 @@
     "Target": "Content, User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/disable-the-chat.jpg"
+    "imageUrl": "/images/tools/disable chat.png"
   },
   {
     "Name": "Share mod comments",
@@ -789,7 +789,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/share-mod-comments.jpg"
+    "imageUrl": "/images/tools/share mod comments.png"
   },
   {
     "Name": "ModMail",
@@ -801,7 +801,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/modmail.jpg"
+    "imageUrl": "/images/tools/modmail.png"
   },
   {
     "Name": "Enable requests for share of banned user information",
@@ -813,7 +813,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/enable-requests-for-share-of-banned-user-information.jpg"
+    "imageUrl": "/images/tools/enable requests.png"
   },
   {
     "Name": "Chat rule agreement",
@@ -825,7 +825,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/chat-rule-agreement.jpg"
+    "imageUrl": "/images/tools/chat rule agre.png"
   },
   {
     "Name": "Page curation",
@@ -837,7 +837,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/page-curation.jpg"
+    "imageUrl": "/images/tools/page curation.png"
   },
   {
     "Name": "Safety rating",
@@ -849,7 +849,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/safety-rating.jpg"
+    "imageUrl": "/images/tools/safety ratings.png"
   },
   {
     "Name": "Invite tracker",
@@ -861,7 +861,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/invite-tracker.jpg"
+    "imageUrl": "/images/tools/invite tracker.png"
   },
   {
     "Name": "Block hyperlinks",
@@ -873,7 +873,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/block-hyperlinks.jpg"
+    "imageUrl": "/images/tools/block hyperlinks.png"
   },
   {
     "Name": "Posting confirmation",
@@ -885,7 +885,7 @@
     "Target": "Content",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/posting-confirmation.jpg"
+    "imageUrl": "/images/tools/posting confirmation.png"
   },
   {
     "Name": "Ban",
@@ -897,7 +897,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/ban.jpg"
+    "imageUrl": "/images/tools/ban.png"
   },
   {
     "Name": "Friend Requests",
@@ -909,7 +909,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/friend-requests.jpg"
+    "imageUrl": "/images/tools/manage friend requests.png"
   },
   {
     "Name": "Clear chat history",
@@ -921,7 +921,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/clear-chat-history.jpg"
+    "imageUrl": "/images/tools/Clear chat history.png"
   },
   {
     "Name": "Mark own content as sensitive",
@@ -933,7 +933,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/mark-own-content-as-sensitive.jpg"
+    "imageUrl": "/images/tools/mark own content.png"
   },
   {
     "Name": "Who can add to groups",
@@ -945,7 +945,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/who-can-add-to-groups.jpg"
+    "imageUrl": "/images/tools/who can add.png"
   },
   {
     "Name": "Hide a playlist from profile",
@@ -957,7 +957,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/hide-a-playlist-from-profile.jpg"
+    "imageUrl": "/images/tools/hide a playlist.png"
   },
   {
     "Name": "Unique chat",
@@ -969,7 +969,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/unique-chat.jpg"
+    "imageUrl": "/images/tools/Unique_chat.png"
   },
   {
     "Name": "Share listening activity to other platforms",
@@ -981,7 +981,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/share-listening-activity-to-other-platforms.jpg"
+    "imageUrl": "/images/tools/share listening activity.png"
   },
   {
     "Name": "Chat verification",
@@ -993,7 +993,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/chat-verification.jpg"
+    "imageUrl": "/images/tools/chat ver.png"
   },
   {
     "Name": "Moderate other bots",
@@ -1005,7 +1005,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/moderate-other-bots.jpg"
+    "imageUrl": "/images/tools/moderate other bots.png"
   },
   {
     "Name": "Emote-only chat",
@@ -1017,7 +1017,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/emote-only-chat.jpg"
+    "imageUrl": "/images/tools/Emote-only_chat.png"
   },
   {
     "Name": "Meta moderation",
@@ -1029,7 +1029,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/meta-moderation.jpg"
+    "imageUrl": "/images/tools/meta moderation.png"
   },
   {
     "Name": "Comments on public posts",
@@ -1041,7 +1041,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/comments-on-public-posts.jpg"
+    "imageUrl": "/images/tools/comments public.png"
   },
   {
     "Name": "Suppress AI content",
@@ -1053,7 +1053,7 @@
     "Target": "Feed",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/suppress-ai-content.jpg"
+    "imageUrl": "/images/tools/suppress ai .png"
   },
   {
     "Name": "Manage the autoplay of videos",
@@ -1065,7 +1065,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/manage-the-autoplay-of-videos.jpg"
+    "imageUrl": "/images/tools/manage the autoplay.png"
   },
   {
     "Name": "Audience control",
@@ -1077,7 +1077,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/audience-control.jpg"
+    "imageUrl": "/images/tools/Audience control.png"
   },
   {
     "Name": "Make new playlists public",
@@ -1089,7 +1089,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/make-new-playlists-public.jpg"
+    "imageUrl": "/images/tools/make playlist public.png"
   },
   {
     "Name": "Warnings",
@@ -1101,7 +1101,7 @@
     "Target": "User",
     "Tool Accessibility": "Platform, Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/warnings.jpg"
+    "imageUrl": "/images/tools/warnings.png"
   },
   {
     "Name": "Jail",
@@ -1113,7 +1113,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/jail.jpg"
+    "imageUrl": "/images/tools/jail.png"
   },
   {
     "Name": "Filter dating pool",
@@ -1125,7 +1125,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/filter-dating-pool.jpg"
+    "imageUrl": "/images/tools/filter dating.jpeg"
   },
   {
     "Name": "Sensitive content filter",
@@ -1137,7 +1137,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/sensitive-content-filter.jpg"
+    "imageUrl": "/images/tools/sensitive filter.png"
   },
   {
     "Name": "Most relevant comment first",
@@ -1149,7 +1149,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/most-relevant-comment-first.jpg"
+    "imageUrl": "/images/tools/most relevant comment.png"
   },
   {
     "Name": "Review posts",
@@ -1161,7 +1161,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/review-posts.jpg"
+    "imageUrl": "/images/tools/review posts.png"
   },
   {
     "Name": "Allow promoted answers",
@@ -1173,7 +1173,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/allow-promoted-answers.jpg"
+    "imageUrl": "/images/tools/Allow promoted answers.png"
   },
   {
     "Name": "Non-mod chat delay",
@@ -1185,7 +1185,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/non-mod-chat-delay.jpg"
+    "imageUrl": "/images/tools/nonmod chat.png"
   },
   {
     "Name": "Hide badge",
@@ -1197,7 +1197,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/hide-badge.jpg"
+    "imageUrl": "/images/tools/hide badge.png"
   },
   {
     "Name": "HeartMob",
@@ -1209,7 +1209,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/heartmob.jpg"
+    "imageUrl": "/images/tools/heartmob.png"
   },
   {
     "Name": "Copyrighted audio warning",
@@ -1221,7 +1221,7 @@
     "Target": "Content",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/copyrighted-audio-warning.jpg"
+    "imageUrl": "/images/tools/copyrighted.png"
   },
   {
     "Name": "Private profile",
@@ -1233,7 +1233,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/private-profile.jpg"
+    "imageUrl": "/images/tools/private profile.png"
   },
   {
     "Name": "Hide live streams",
@@ -1245,7 +1245,7 @@
     "Target": "Feed",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/hide-live-streams.jpg"
+    "imageUrl": "/images/tools/hide live.png"
   },
   {
     "Name": "Automatic review of reported posts",
@@ -1257,7 +1257,7 @@
     "Target": "Content",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/automatic-review-of-reported-posts.jpg"
+    "imageUrl": "/images/tools/automatic review of.png"
   },
   {
     "Name": "Horizon home",
@@ -1269,7 +1269,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/horizon-home.jpg"
+    "imageUrl": "/images/tools/horizon home.png"
   },
   {
     "Name": "Merging threads",
@@ -1281,7 +1281,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/merging-threads.jpg"
+    "imageUrl": "/images/tools/merging threads.png"
   },
   {
     "Name": "Share ban information",
@@ -1293,7 +1293,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/share-ban-information.jpg"
+    "imageUrl": "/images/tools/share ban info.png"
   },
   {
     "Name": "Saved replies",
@@ -1305,7 +1305,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users, Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/saved-replies.jpg"
+    "imageUrl": "/images/tools/saved replies.png"
   },
   {
     "Name": "Clear history of a player",
@@ -1317,7 +1317,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/clear-history-of-a-player.jpg"
+    "imageUrl": "/images/tools/clear history.png"
   },
   {
     "Name": "Show follower and following lists on profile",
@@ -1329,7 +1329,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/show-follower-and-following-lists-on-profile.jpg"
+    "imageUrl": "/images/tools/show follower.png"
   },
   {
     "Name": "Block events invite",
@@ -1341,7 +1341,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/block-events-invite.jpg"
+    "imageUrl": "/images/tools/block events.png"
   },
   {
     "Name": "Turn comments on or off",
@@ -1353,7 +1353,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users, Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/turn-comments-on-or-off.jpg"
+    "imageUrl": "/images/tools/turn comments.png"
   },
   {
     "Name": "Sensitive content alert",
@@ -1365,7 +1365,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/sensitive-content-alert.jpg"
+    "imageUrl": "/images/tools/sensitive content alert.png"
   },
   {
     "Name": "Make playlist private",
@@ -1377,7 +1377,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/make-playlist-private.jpg"
+    "imageUrl": "/images/tools/make playlist private.png"
   },
   {
     "Name": "Block commonly flagged words",
@@ -1389,7 +1389,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/block-commonly-flagged-words.jpg"
+    "imageUrl": "/images/tools/block commonly flagged.png"
   },
   {
     "Name": "Allow LLMs to be trained on your content",
@@ -1401,7 +1401,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/allow-llms-to-be-trained-on-your-content.jpg"
+    "imageUrl": "/images/tools/Allow LLMs to be.png"
   },
   {
     "Name": "Mute single player",
@@ -1413,7 +1413,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/mute-single-player.jpg"
+    "imageUrl": "/images/tools/mute single player.png"
   },
   {
     "Name": "Teleport to a player",
@@ -1425,7 +1425,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/teleport-to-a-player.jpg"
+    "imageUrl": "/images/tools/teleport to a player.png"
   },
   {
     "Name": "Silence unknown callers",
@@ -1437,7 +1437,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/silence-unknown-callers.jpg"
+    "imageUrl": "/images/tools/silence unkwown.png"
   },
   {
     "Name": "Permitted words",
@@ -1449,7 +1449,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/permitted-words.jpg"
+    "imageUrl": "/images/tools/permitted words.png"
   },
   {
     "Name": "Garble voices",
@@ -1461,7 +1461,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/garble-voices.jpg"
+    "imageUrl": "/images/tools/garble voices.png"
   },
   {
     "Name": "Unrange ban",
@@ -1473,7 +1473,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/unrange-ban.jpg"
+    "imageUrl": "/images/tools/unrange ban.png"
   },
   {
     "Name": "Post requirements",
@@ -1485,7 +1485,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/post-requirements.jpg"
+    "imageUrl": "/images/tools/post requirements.png"
   },
   {
     "Name": "Hide media in DMs from unknown users",
@@ -1497,7 +1497,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/hide-media-in-dms-from-unknown-users.jpg"
+    "imageUrl": "/images/tools/hide media in dms.png"
   },
   {
     "Name": "Show saved content",
@@ -1509,7 +1509,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/show-saved-content.jpg"
+    "imageUrl": "/images/tools/show saved content.jpeg"
   },
   {
     "Name": "Follow or unfollow",
@@ -1521,7 +1521,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/follow-or-unfollow.jpg"
+    "imageUrl": "/images/tools/follow.png"
   },
   {
     "Name": "Report offensive emblems",
@@ -1533,7 +1533,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/report-offensive-emblems.jpg"
+    "imageUrl": "/images/tools/report offensive emblems.png"
   },
   {
     "Name": "Avoid as teammate",
@@ -1545,7 +1545,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/avoid-as-teammate.jpg"
+    "imageUrl": "/images/tools/avoid as teammate.png"
   },
   {
     "Name": "Personal space",
@@ -1557,7 +1557,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/personal-space.jpg"
+    "imageUrl": "/images/tools/personal space.png"
   },
   {
     "Name": "Explicit content control",
@@ -1569,7 +1569,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/explicit-content-control.jpg"
+    "imageUrl": "/images/tools/explicit content control.png"
   },
   {
     "Name": "Reminders",
@@ -1581,7 +1581,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/reminders.jpg"
+    "imageUrl": "/images/tools/reminders.png"
   },
   {
     "Name": "Profile viewing information",
@@ -1593,7 +1593,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/profile-viewing-information.jpg"
+    "imageUrl": "/images/tools/profile viewing.png"
   },
   {
     "Name": "Apply priority-listing to suggested channels",
@@ -1605,7 +1605,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/apply-priority-listing-to-suggested-channels.jpg"
+    "imageUrl": "/images/tools/Apply priority listing.png"
   },
   {
     "Name": "Marking a thread as answered",
@@ -1617,7 +1617,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/marking-a-thread-as-answered.jpg"
+    "imageUrl": "/images/tools/marking thread.png"
   },
   {
     "Name": "Don't recommend channel",
@@ -1629,7 +1629,7 @@
     "Target": "Feed",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/don-t-recommend-channel.jpg"
+    "imageUrl": "/images/tools/dont recommend.png"
   },
   {
     "Name": "Block mention spam",
@@ -1641,7 +1641,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/block-mention-spam.jpg"
+    "imageUrl": "/images/tools/block mention.png"
   },
   {
     "Name": "Edit another user's post",
@@ -1653,7 +1653,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/edit-another-user-s-post.jpg"
+    "imageUrl": "/images/tools/edit another user post.png"
   },
   {
     "Name": "Enable raid",
@@ -1665,7 +1665,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/enable-raid.jpg"
+    "imageUrl": "/images/tools/enable raid.png"
   },
   {
     "Name": "Block gift subscriptions",
@@ -1677,7 +1677,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/block-gift-subscriptions.jpg"
+    "imageUrl": "/images/tools/block gift sub.png"
   },
   {
     "Name": "Staff alerts",
@@ -1689,7 +1689,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/staff-alerts.jpg"
+    "imageUrl": "/images/tools/staff alerts.png"
   },
   {
     "Name": "Content language",
@@ -1701,7 +1701,7 @@
     "Target": "Content",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/content-language.jpg"
+    "imageUrl": "/images/tools/content language.png"
   },
   {
     "Name": "Automated DM",
@@ -1713,7 +1713,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users, Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/automated-dm.jpg"
+    "imageUrl": "/images/tools/Automated dm.png"
   },
   {
     "Name": "Snooze a page or user",
@@ -1725,7 +1725,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/snooze-a-page-or-user.jpg"
+    "imageUrl": "/images/tools/snooze a page.png"
   },
   {
     "Name": "ToxMod",
@@ -1737,7 +1737,7 @@
     "Target": "Content, User",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/toxmod.jpg"
+    "imageUrl": "/images/tools/toxmod.png"
   },
   {
     "Name": "DupeIP mass report",
@@ -1749,7 +1749,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/dupeip-mass-report.jpg"
+    "imageUrl": "/images/tools/dupeip mass.png"
   },
   {
     "Name": "Unban requests",
@@ -1761,7 +1761,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/unban-requests.jpg"
+    "imageUrl": "/images/tools/unban.png"
   },
   {
     "Name": "Interests keywords",
@@ -1773,7 +1773,7 @@
     "Target": "Content",
     "Tool Accessibility": "Platform, Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/interests-keywords.jpg"
+    "imageUrl": "/images/tools/interests keywords.png"
   },
   {
     "Name": "Hide comments",
@@ -1785,7 +1785,7 @@
     "Target": "Content",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/hide-comments.jpg"
+    "imageUrl": "/images/tools/hide comments.png"
   },
   {
     "Name": "Show no reposts",
@@ -1797,7 +1797,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/show-no-reposts.jpg"
+    "imageUrl": "/images/tools/show no reposts.png"
   },
   {
     "Name": "Specific domain links only",
@@ -1809,7 +1809,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/specific-domain-links-only.jpg"
+    "imageUrl": "/images/tools/specific domain links only.png"
   },
   {
     "Name": "Ban evasion",
@@ -1821,7 +1821,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/ban-evasion.jpg"
+    "imageUrl": "/images/tools/ban evasion.png"
   },
   {
     "Name": "Retrieve deleted posts",
@@ -1833,7 +1833,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/retrieve-deleted-posts.jpg"
+    "imageUrl": "/images/tools/retrieve deleted posts.png"
   },
   {
     "Name": "Close friends / lists",
@@ -1845,7 +1845,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/close-friends-lists.jpg"
+    "imageUrl": "/images/tools/close friends.png"
   },
   {
     "Name": "Matchmakers",
@@ -1857,7 +1857,7 @@
     "Target": "Feed, User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/matchmakers.jpg"
+    "imageUrl": "/images/tools/matchmakers.jpeg"
   },
   {
     "Name": "Moderation history-based auto-mod",
@@ -1869,7 +1869,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/moderation-history-based-auto-mod.jpg"
+    "imageUrl": "/images/tools/moderation history based.png"
   },
   {
     "Name": "Block user",
@@ -1881,7 +1881,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/block-user.jpg"
+    "imageUrl": "/images/tools/block user.png"
   },
   {
     "Name": "Show recently played artists on profile",
@@ -1893,7 +1893,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/show-recently-played-artists-on-profile.jpg"
+    "imageUrl": "/images/tools/show recently played.png"
   },
   {
     "Name": "Hide related content based on user history",
@@ -1905,7 +1905,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/hide-related-content-based-on-user-history.jpg"
+    "imageUrl": "/images/tools/hide related content.png"
   },
   {
     "Name": "Who can follow",
@@ -1917,7 +1917,19 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/who-can-follow.jpg"
+    "imageUrl": "/images/tools/who can follow.png"
+  },
+  {
+    "Name": "Manage user in chat",
+    "Category": "Communal Support",
+    "Customization": "No",
+    "Description": "Allow moderators to view chat and ban history for users in your channel, and view and add comments on users.",
+    "Example Platforms": "Twitch",
+    "Layer": "Social infrastructure",
+    "Target": "User",
+    "Tool Accessibility": "Regular User",
+    "Tool Persistence": "Persistent",
+    "imageUrl": "/images/tools/manage user.png"
   },
   {
     "Name": "Personalize voice audio",
@@ -1929,7 +1941,7 @@
     "Target": "Content, User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/personalize-voice-audio.jpg"
+    "imageUrl": "/images/tools/personalize voice.png"
   },
   {
     "Name": "Set max time of usage",
@@ -1941,7 +1953,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/set-max-time-of-usage.jpg"
+    "imageUrl": "/images/tools/set max time of usage.png"
   },
   {
     "Name": "Platform preferences",
@@ -1953,7 +1965,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/platform-preferences.jpg"
+    "imageUrl": "/images/tools/platform preferences.png"
   },
   {
     "Name": "TrollBusters",
@@ -1965,7 +1977,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/trollbusters.jpg"
+    "imageUrl": "/images/tools/trollbusters.png"
   },
   {
     "Name": "Notify when a screenshot is taken",
@@ -1977,7 +1989,7 @@
     "Target": "User",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/notify-when-a-screenshot-is-taken.jpg"
+    "imageUrl": "/images/tools/notify screenshot.jpeg"
   },
   {
     "Name": "Edit inventory of a player",
@@ -1989,7 +2001,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/edit-inventory-of-a-player.jpg"
+    "imageUrl": "/images/tools/edit inventory.png"
   },
   {
     "Name": "Social interactions with ads",
@@ -2001,7 +2013,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/social-interactions-with-ads.jpg"
+    "imageUrl": "/images/tools/social interactions with ads.png"
   },
   {
     "Name": "Block pages",
@@ -2013,7 +2025,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/block-pages.jpg"
+    "imageUrl": "/images/tools/block pages.png"
   },
   {
     "Name": "Remove as incompatible",
@@ -2025,7 +2037,7 @@
     "Target": "Content",
     "Tool Accessibility": "Platform, Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/remove-as-incompatible.jpg"
+    "imageUrl": "/images/tools/remove as invompatible.png"
   },
   {
     "Name": "Collapse posts",
@@ -2037,7 +2049,7 @@
     "Target": "Content",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/collapse-posts.jpg"
+    "imageUrl": "/images/tools/collapse posts.png"
   },
   {
     "Name": "Display suggested channels",
@@ -2049,7 +2061,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/display-suggested-channels.jpg"
+    "imageUrl": "/images/tools/display suggested.png"
   },
   {
     "Name": "Block teleport",
@@ -2061,7 +2073,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/block-teleport.jpg"
+    "imageUrl": "/images/tools/block teleport.png"
   },
   {
     "Name": "Slowmode chat",
@@ -2073,7 +2085,7 @@
     "Target": "Content, User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/slowmode-chat.jpg"
+    "imageUrl": "/images/tools/slowmode chat.png"
   },
   {
     "Name": "Hidden requests",
@@ -2085,7 +2097,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/hidden-requests.jpg"
+    "imageUrl": "/images/tools/hidden requests.png"
   },
   {
     "Name": "List of recent players",
@@ -2097,7 +2109,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/list-of-recent-players.jpg"
+    "imageUrl": "/images/tools/list of recent .png"
   },
   {
     "Name": "Endorsements",
@@ -2109,7 +2121,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/endorsements.jpg"
+    "imageUrl": "/images/tools/endorsements.png"
   },
   {
     "Name": "Hide page in some country",
@@ -2121,7 +2133,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/hide-page-in-some-country.jpg"
+    "imageUrl": "/images/tools/hide page country.png"
   },
   {
     "Name": "Remove content when searching",
@@ -2133,7 +2145,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/remove-content-when-searching.jpg"
+    "imageUrl": "/images/tools/remove content .png"
   },
   {
     "Name": "Report",
@@ -2145,7 +2157,7 @@
     "Target": "Content, User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/report.jpg"
+    "imageUrl": "/images/tools/report.jpeg"
   },
   {
     "Name": "Video preview",
@@ -2157,7 +2169,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/video-preview.jpg"
+    "imageUrl": "/images/tools/video preview.png"
   },
   {
     "Name": "Provide community coupons",
@@ -2169,7 +2181,7 @@
     "Target": "User",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/provide-community-coupons.jpg"
+    "imageUrl": "/images/tools/provide community .png"
   },
   {
     "Name": "Message nudges",
@@ -2181,7 +2193,7 @@
     "Target": "Content",
     "Tool Accessibility": "Platform",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/message-nudges.jpg"
+    "imageUrl": "/images/tools/message nudges.png"
   },
   {
     "Name": "Block DM",
@@ -2193,7 +2205,7 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Persistent",
-    "imageUrl": "/images/tools/block-dm.jpg"
+    "imageUrl": "/images/tools/block dm.png"
   },
   {
     "Name": "Reviews on a user",
@@ -2205,7 +2217,7 @@
     "Target": "User",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/reviews-on-a-user.jpg"
+    "imageUrl": "/images/tools/reviews on a user.jpg"
   },
   {
     "Name": "Teleport a player",
@@ -2217,7 +2229,7 @@
     "Target": "User",
     "Tool Accessibility": "Power Users",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/teleport-a-player.jpg"
+    "imageUrl": "/images/tools/teleport a player.png"
   },
   {
     "Name": "Private session",
@@ -2229,6 +2241,6 @@
     "Target": "Content",
     "Tool Accessibility": "Regular User",
     "Tool Persistence": "Ad hoc",
-    "imageUrl": "/images/tools/private-session.jpg"
+    "imageUrl": "/images/tools/private session.png"
   }
 ]
