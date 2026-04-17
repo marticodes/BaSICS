@@ -2,17 +2,12 @@ import { useMemo } from 'react'
 import {
   AccessibilityDonut,
   CategoryBar,
-  CategoryLayerHeatmap,
-  CategoryTreemapLike,
-  LayerCategoryFlowList,
   MatrixBar,
 } from '../components/charts/Charts'
 import {
   accessibilityDistribution,
-  categoryLayerMatrix,
   categoryCustomizationMatrix,
   customizationDistribution,
-  layerCategoryFlow,
   layerDistribution,
   toolsPerCategory,
 } from '../lib/aggregations'
@@ -24,9 +19,6 @@ export const DashboardPage = ({ tools }: { tools: Tool[] }) => {
   const matrix = useMemo(() => categoryCustomizationMatrix(tools), [tools])
   const customCounts = useMemo(() => customizationDistribution(tools), [tools])
   const layers = useMemo(() => layerDistribution(tools), [tools])
-  const layerCategoryData = useMemo(() => categoryLayerMatrix(tools), [tools])
-  const flowData = useMemo(() => layerCategoryFlow(tools), [tools])
-  const layerKeys = useMemo(() => [...new Set(tools.map((tool) => tool.layer))], [tools])
   const matrixKeys = useMemo(
     () => [...new Set(tools.map((tool) => tool.customization))],
     [tools],
