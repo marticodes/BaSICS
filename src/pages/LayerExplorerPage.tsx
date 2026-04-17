@@ -37,9 +37,9 @@ export const LayerExplorerPage = ({ tools, allTools }: { tools: Tool[]; allTools
   return (
     <section className="space-y-4">
       <div>
-        <h1 className="text-2xl font-bold">Layer Explorer</h1>
+        <h1 className="text-2xl font-bold">Category Explorer</h1>
         <p className="text-sm text-slate-600">
-          Four-color columns by layer, with categories and tools inside each column.
+          Four-color columns by category, with clusters and tools inside each column.
         </p>
       </div>
 

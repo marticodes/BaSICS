@@ -23,7 +23,7 @@ export const ToolDetailPage = ({ tools }: { tools: Tool[] }) => {
         <Meta k="Customization" v={tool.customization} />
         <Meta k="Accessibility" v={tool.accessibility} />
         <Meta k="Persistence" v={tool.persistence} />
-        <Meta k="Layer" v={tool.layer} />
+        <Meta k="Category" v={tool.layer} />
         <Meta k="Target" v={tool.target} />
         <Meta k="Example Platforms" v={tool.examplePlatforms} />
       </dl>

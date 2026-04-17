@@ -4,7 +4,7 @@ import { ToolDetailModal } from '../components/ToolDetailModal'
 import { tallyByField } from '../lib/aggregations'
 import type { Tool } from '../types'
 
-/** Same layer palette as Layer Explorer (indigo → emerald → amber → rose). */
+/** Same category palette as Category Explorer (indigo → emerald → amber → rose). */
 const layerCardColors = [
   'bg-indigo-50 border-indigo-200',
   'bg-emerald-50 border-emerald-200',
@@ -75,13 +75,13 @@ export const ToolMapPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool
       >
         <p className="font-semibold text-indigo-950">Why these colors?</p>
         <p className="mt-1 text-slate-700">
-          Card colors show each tool&apos;s <span className="font-medium">Layer</span> in BaSICS (where and how the
-          tool sits in the moderation stack). Tools that share the same layer use the same color family, matching the
-          Layers page. Distinct layers are assigned one of four repeating tints (indigo, emerald, amber, rose) in
-          alphabetical order, so you can scan by layer at a glance.
+          Card colors show each tool&apos;s <span className="font-medium">Category</span> in BaSICS (where and how the
+          tool sits in the moderation stack). Tools that share the same category use the same color family, matching the
+          Categories page. Distinct categories are assigned one of four repeating tints (indigo, emerald, amber, rose) in
+          alphabetical order, so you can scan by category at a glance.
         </p>
         {layerLegend.length > 0 && (
-          <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2" aria-label="Layer color legend">
+          <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2" aria-label="Category color legend">
             {layerLegend.map(([layer, colorClass]) => (
               <li key={layer} className="flex items-center gap-2 text-xs text-slate-700">
                 <span

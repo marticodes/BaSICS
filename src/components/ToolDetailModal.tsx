@@ -30,7 +30,7 @@ export const ToolDetailModal = ({ tool, tools, onClose }: Props) => {
           <div><dt className="font-semibold">Customization</dt><dd>{tool.customization}</dd></div>
           <div><dt className="font-semibold">Accessibility</dt><dd>{tool.accessibility}</dd></div>
           <div><dt className="font-semibold">Persistence</dt><dd>{tool.persistence}</dd></div>
-          <div><dt className="font-semibold">Layer</dt><dd>{tool.layer}</dd></div>
+          <div><dt className="font-semibold">Category</dt><dd>{tool.layer}</dd></div>
           <div><dt className="font-semibold">Target</dt><dd>{tool.target}</dd></div>
           <div><dt className="font-semibold">Example Platforms</dt><dd>{tool.examplePlatforms}</dd></div>
         </dl>

@@ -70,9 +70,9 @@ export const FilterSidebar = ({
         </div>
       )}
       <button className="w-full rounded-md bg-slate-900 px-3 py-2 text-sm text-white" onClick={reset}>Reset all filters</button>
-      <Multi title="Category" values={options.categories} selected={filters.categories} onToggle={(v) => toggle('categories', v)} />
+      <Multi title="Cluster" values={options.categories} selected={filters.categories} onToggle={(v) => toggle('categories', v)} />
       <Multi title="Customization" values={options.customizations} selected={filters.customizations} onToggle={(v) => toggle('customizations', v)} />
-      <Multi title="Layer" values={options.layers} selected={filters.layers} onToggle={(v) => toggle('layers', v)} />
+      <Multi title="Category" values={options.layers} selected={filters.layers} onToggle={(v) => toggle('layers', v)} />
       <Multi title="Target" values={options.targets} selected={filters.targets} onToggle={(v) => toggle('targets', v)} />
       <Multi title="Accessibility" values={options.accessibilities} selected={filters.accessibilities} onToggle={(v) => toggle('accessibilities', v)} />
       <Multi title="Persistence" values={options.persistences} selected={filters.persistences} onToggle={(v) => toggle('persistences', v)} />

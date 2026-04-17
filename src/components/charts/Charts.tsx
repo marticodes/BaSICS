@@ -91,7 +91,7 @@ export const CategoryLayerHeatmap = ({
       <table className="min-w-full border-separate border-spacing-1 text-xs">
         <thead>
           <tr>
-            <th className="p-1 text-left">Category</th>
+            <th className="p-1 text-left">Cluster</th>
             {layers.map((layer) => (
               <th key={layer} className="p-1 text-left">{layer}</th>
             ))}
