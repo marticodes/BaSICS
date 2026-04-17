@@ -47,9 +47,9 @@ export const DashboardPage = ({ tools }: { tools: Tool[] }) => {
         <ChartCard title="Accessibility distribution"><AccessibilityDonut data={accessData as { accessibility: string; value: number }[]} /></ChartCard>
         <ChartCard title="Category vs customization"><MatrixBar data={matrix} keys={matrixKeys} /></ChartCard>
         <ChartCard title="Layer distribution"><CategoryBar data={layers.map((r) => ({ category: r.layer as string, value: r.value }))} /></ChartCard>
-        <ChartCard title="Category x layer heatmap"><CategoryLayerHeatmap data={layerCategoryData} layers={layerKeys} /></ChartCard>
-        <ChartCard title="Category treemap (option)"><CategoryTreemapLike data={categoryData as { category: string; value: number }[]} /></ChartCard>
-        <ChartCard title="Layer -> category flow (option)"><LayerCategoryFlowList data={flowData} /></ChartCard>
+        {/* <ChartCard title="Category x layer heatmap"><CategoryLayerHeatmap data={layerCategoryData} layers={layerKeys} /></ChartCard> */}
+        {/* <ChartCard title="Category treemap (option)"><CategoryTreemapLike data={categoryData as { category: string; value: number }[]} /></ChartCard> */}
+        {/* <ChartCard title="Layer -> category flow (option)"><LayerCategoryFlowList data={flowData} /></ChartCard> */}
       </div>
     </section>
   )
