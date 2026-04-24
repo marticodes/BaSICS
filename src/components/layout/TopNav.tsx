@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 const links = [
   ['/', 'Dashboard'],
+  ['/legend', 'Legend'],
   ['/layers', 'Categories'],
   ['/map', 'Tool Map'],
 ]
