@@ -7,6 +7,7 @@ import { useFilters } from './hooks/useFilters'
 import { useToolsData } from './hooks/useToolsData'
 import { DashboardPage } from './pages/DashboardPage'
 import { LayerExplorerPage } from './pages/LayerExplorerPage'
+import { PageTestPage } from './pages/PageTestPage'
 import { LegendPage } from './pages/LegendPage'
 import { ToolDetailPage } from './pages/ToolDetailPage'
 import { ToolMapPage } from './pages/ToolMapPage'
@@ -108,6 +109,7 @@ function App() {
               <Route path="/layers" element={<LayerExplorerPage tools={mainTools} allTools={tools} />} />
               <Route path="/categories" element={<Navigate to="/layers" replace />} />
               <Route path="/map" element={<ToolMapPage tools={mainTools} allTools={tools} />} />
+              <Route path="/page-test" element={<PageTestPage tools={mainTools} allTools={tools} />} />
               <Route path="/tool/:toolId" element={<ToolDetailPage tools={tools} />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

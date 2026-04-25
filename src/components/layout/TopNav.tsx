@@ -5,6 +5,7 @@ const links = [
   ['/legend', 'Legend'],
   ['/layers', 'Categories'],
   ['/map', 'Tool Map'],
+  ['/page-test', 'Page Test'],
 ]
 
 export const TopNav = () => {
