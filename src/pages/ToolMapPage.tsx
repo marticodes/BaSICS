@@ -125,7 +125,7 @@ export const ToolMapPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool
                 className="rounded border border-slate-300 bg-white px-2 py-1 text-sm text-slate-800"
               >
                 <option value="alphabetical">Alphabetical (tool name)</option>
-                <option value="cluster-category">Cluster (and category)</option>
+                <option value="cluster-category">Cluster</option>
                 <option value="target">Target</option>
                 <option value="accessibility">Accessibility</option>
               </select>
