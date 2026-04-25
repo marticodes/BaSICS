@@ -30,10 +30,14 @@ export const DashboardPage = ({ tools }: { tools: Tool[] }) => {
       <h1 className="text-2xl font-bold">Overview Dashboard</h1>
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
         <Stat label="Total tools" value={tools.length} />
-        <Stat label="Clusters" value={new Set(tools.map((tool) => tool.category)).size} to="/legend" />
-        <Stat label="Customization levels" value={customCounts.length} to="/legend" />
-        <Stat label="Accessibility types" value={accessData.length} to="/legend" />
-        <Stat label="Target types" value={new Set(tools.map((t) => t.target)).size} to="/legend" />
+        <Stat
+          label="Clusters"
+          value={new Set(tools.map((tool) => tool.category)).size}
+          to="/legend?section=clusters"
+        />
+        <Stat label="Customization levels" value={customCounts.length} to="/legend?section=customization" />
+        <Stat label="Accessibility types" value={accessData.length} to="/legend?section=tool-accessibility" />
+        <Stat label="Target types" value={new Set(tools.map((t) => t.target)).size} to="/legend?section=target" />
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
         <ChartCard title="Tools per cluster"><CategoryBar data={categoryData as { category: string; value: number }[]} /></ChartCard>

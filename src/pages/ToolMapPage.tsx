@@ -4,7 +4,7 @@ import { ToolDetailModal } from '../components/ToolDetailModal'
 import { tallyByField } from '../lib/aggregations'
 import type { Tool } from '../types'
 
-/** Same category palette as Category Explorer (indigo → emerald → amber → rose). */
+/** Four fixed colors from Category Explorer (indigo → emerald → amber → rose). */
 const layerCardColors = [
   'bg-indigo-50 border-indigo-200',
   'bg-emerald-50 border-emerald-200',
@@ -23,10 +23,13 @@ function useLayerColorMap(tools: Tool[]) {
   }, [tools])
 }
 
+type SortMode = 'alphabetical' | 'cluster-category' | 'target' | 'accessibility'
+
 export const ToolMapPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool[] }) => {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set())
   const [detailTool, setDetailTool] = useState<Tool | null>(null)
-  const layerColors = useLayerColorMap(tools)
+  const [sortMode, setSortMode] = useState<SortMode>('alphabetical')
+  const layerColors = useLayerColorMap(allTools)
 
   const layerLegend = useMemo(
     () => [...layerColors.entries()].sort((a, b) => a[0].localeCompare(b[0])),
@@ -49,14 +52,30 @@ export const ToolMapPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool
     [tools, selectedIds],
   )
 
-  const customizationPie = useMemo(
-    () => tallyByField(selectedTools, 'customization'),
+  const clusterPie = useMemo(
+    () => tallyByField(selectedTools, 'category'),
     [selectedTools],
   )
+  const targetPie = useMemo(() => tallyByField(selectedTools, 'target'), [selectedTools])
   const accessibilityPie = useMemo(
     () => tallyByField(selectedTools, 'accessibility'),
     [selectedTools],
   )
+  const sortedTools = useMemo(() => {
+    const byText = (a: string, b: string) => a.localeCompare(b, undefined, { sensitivity: 'base' })
+    return [...tools].sort((a, b) => {
+      if (sortMode === 'cluster-category') {
+        return byText(a.category, b.category) || byText(a.layer, b.layer) || byText(a.name, b.name)
+      }
+      if (sortMode === 'target') {
+        return byText(a.target, b.target) || byText(a.name, b.name)
+      }
+      if (sortMode === 'accessibility') {
+        return byText(a.accessibility, b.accessibility) || byText(a.name, b.name)
+      }
+      return byText(a.name, b.name)
+    })
+  }, [sortMode, tools])
 
   return (
     <section className="space-y-4">
@@ -76,9 +95,7 @@ export const ToolMapPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool
         <p className="font-semibold text-indigo-950">Why these colors?</p>
         <p className="mt-1 text-slate-700">
           Card colors show each tool&apos;s <span className="font-medium">Category</span> in BaSICS (where and how the
-          tool sits in the moderation stack). Tools that share the same category use the same color family, matching the
-          Categories page. Distinct categories are assigned one of four repeating tints (indigo, emerald, amber, rose) in
-          alphabetical order, so you can scan by category at a glance.
+          tool sits in the moderation stack).
         </p>
         {layerLegend.length > 0 && (
           <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2" aria-label="Category color legend">
@@ -98,8 +115,21 @@ export const ToolMapPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool
       </div>
 
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0 lg:flex-[0.98]">
           <div className="mb-2 flex flex-wrap items-center gap-2">
+            <label className="flex items-center gap-2 text-sm text-slate-600">
+              Sort by
+              <select
+                value={sortMode}
+                onChange={(event) => setSortMode(event.target.value as SortMode)}
+                className="rounded border border-slate-300 bg-white px-2 py-1 text-sm text-slate-800"
+              >
+                <option value="alphabetical">Alphabetical (tool name)</option>
+                <option value="cluster-category">Cluster (and category)</option>
+                <option value="target">Target</option>
+                <option value="accessibility">Accessibility</option>
+              </select>
+            </label>
             <span className="text-sm text-slate-600" aria-live="polite">
               {selectedIds.size} selected
             </span>
@@ -114,7 +144,7 @@ export const ToolMapPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool
             )}
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-            {tools.map((tool) => {
+            {sortedTools.map((tool) => {
               const isSelected = selectedIds.has(tool.id)
               const layerClass = layerColors.get(tool.layer) ?? 'bg-slate-50 border-slate-200'
               return (
@@ -155,25 +185,31 @@ export const ToolMapPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool
         </div>
 
         <aside
-          className="w-full shrink-0 rounded-xl border border-slate-200 bg-white p-4 shadow-sm lg:sticky lg:top-24 lg:w-[320px]"
+          className="w-full shrink-0 rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:w-[300px] lg:overflow-y-auto lg:[scroll-behavior:smooth] lg:[scrollbar-gutter:stable] lg:overscroll-contain"
           aria-label="Selection statistics"
         >
           {selectedTools.length === 0 ? (
             <p className="text-sm text-slate-500">Select one or more tools to see customization and accessibility distributions.</p>
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-4">
               <p className="text-sm font-medium text-slate-800">
                 Statistics for {selectedTools.length} tool{selectedTools.length === 1 ? '' : 's'}
               </p>
-              <SelectionPie data={customizationPie} title="Customization (tool type)" />
-              <SelectionPie data={accessibilityPie} title="Tool accessibility" />
+              <SelectionPie data={clusterPie} title="Cluster distribution" compact />
+              <SelectionPie data={targetPie} title="Target distribution" compact />
+              <SelectionPie data={accessibilityPie} title="Tool accessibility" compact />
             </div>
           )}
         </aside>
       </div>
 
       {detailTool && (
-        <ToolDetailModal tool={detailTool} tools={allTools} onClose={() => setDetailTool(null)} />
+        <ToolDetailModal
+          tool={detailTool}
+          tools={allTools}
+          onClose={() => setDetailTool(null)}
+          onOpenTool={(tool) => setDetailTool(tool)}
+        />
       )}
     </section>
   )

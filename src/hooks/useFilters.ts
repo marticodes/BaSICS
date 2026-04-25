@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import type { FilterPreset, Filters, Tool } from '../types'
-import { createDefaultFilters, filterTools, uniqueValues } from '../lib/filtering'
+import { createDefaultFilters, filterTools, uniqueSplitValues, uniqueValues } from '../lib/filtering'
 import { loadPresets, savePresets } from '../lib/storage'
 
 export const useFilters = (tools: Tool[]) => {
@@ -12,11 +12,8 @@ export const useFilters = (tools: Tool[]) => {
   const options = useMemo(
     () => ({
       categories: uniqueValues(tools, 'category'),
-      customizations: uniqueValues(tools, 'customization'),
-      layers: uniqueValues(tools, 'layer'),
-      targets: uniqueValues(tools, 'target'),
-      accessibilities: uniqueValues(tools, 'accessibility'),
-      persistences: uniqueValues(tools, 'persistence'),
+      targets: uniqueSplitValues(tools, 'target'),
+      accessibilities: uniqueSplitValues(tools, 'accessibility'),
     }),
     [tools],
   )

@@ -1,3 +1,5 @@
+import { useEffect, useMemo } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import type { LegendEntry, LegendSection } from '../data/legend'
 import { legendSections } from '../data/legend'
 
@@ -7,8 +9,13 @@ const sidebarSections = legendSections.filter(
   (s) => s.title !== 'Clusters' && s.title !== 'Target',
 )
 
+const toAnchorId = (title: string) => title.toLowerCase().replace(/\s+/g, '-')
+
 const LegendTable = ({ section }: { section: LegendSection }) => (
-  <article className="overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm ring-1 ring-slate-900/5">
+  <article
+    id={toAnchorId(section.title)}
+    className="scroll-mt-28 overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm ring-1 ring-slate-900/5"
+  >
     <div className="border-b border-slate-200 bg-gradient-to-r from-indigo-50/80 to-white px-4 py-3">
       <h2 className="text-base font-semibold text-slate-900">{section.title}</h2>
     </div>
@@ -46,6 +53,17 @@ const LegendTable = ({ section }: { section: LegendSection }) => (
 )
 
 export const LegendPage = () => {
+  const [searchParams] = useSearchParams()
+  const targetSectionId = useMemo(() => searchParams.get('section')?.trim().toLowerCase() ?? '', [searchParams])
+
+  useEffect(() => {
+    if (!targetSectionId) return
+    const target = document.getElementById(targetSectionId)
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [targetSectionId])
+
   if (!clustersSection) {
     return (
       <section className="space-y-4">

@@ -84,7 +84,7 @@ function App() {
             />
           </section>
           {showFilters && (
-            <div id="optional-filters" className="absolute right-0 top-[132px] z-30 w-full max-w-sm">
+            <div id="optional-filters" className="absolute right-0 top-[102px] z-30 w-full max-w-[300px]">
               <FilterSidebar
                 filters={filters}
                 options={options}
@@ -92,6 +92,7 @@ function App() {
                 setSearch={(search) => setFilters((prev) => ({ ...prev, search }))}
                 reset={reset}
                 showSearch={false}
+                className="max-h-[min(65vh,460px)] overflow-y-auto"
               />
             </div>
           )}

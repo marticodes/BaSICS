@@ -8,7 +8,7 @@ export const ActiveFilterChips = ({
   onRemove: (key: Exclude<keyof Filters, 'search'>, value: string) => void
 }) => {
   const entries: { key: Exclude<keyof Filters, 'search'>; value: string }[] = []
-  ;(['categories', 'customizations', 'layers', 'targets', 'accessibilities', 'persistences'] as const).forEach((key) => {
+  ;(['categories', 'targets', 'accessibilities'] as const).forEach((key) => {
     filters[key].forEach((value) => entries.push({ key, value }))
   })
 

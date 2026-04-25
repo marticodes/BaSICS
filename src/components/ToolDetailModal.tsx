@@ -1,13 +1,16 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import type { Tool } from '../types'
 
 interface Props {
   tool: Tool
   tools: Tool[]
   onClose: () => void
+  onOpenTool: (tool: Tool) => void
 }
 
-export const ToolDetailModal = ({ tool, tools, onClose }: Props) => {
+export const ToolDetailModal = ({ tool, tools, onClose, onOpenTool }: Props) => {
+  const [isTallImage, setIsTallImage] = useState(false)
+  const [isImageOpen, setIsImageOpen] = useState(false)
   const related = tools
     .filter((t) => t.id !== tool.id)
     .filter((t) => t.category === tool.category || t.layer === tool.layer || t.target === tool.target)
@@ -24,26 +27,70 @@ export const ToolDetailModal = ({ tool, tools, onClose }: Props) => {
           <button onClick={onClose} className="rounded bg-slate-100 px-3 py-1">Close</button>
         </div>
 
-        <img src={tool.imageUrl} alt={tool.name} className="mb-4 h-56 w-full rounded-lg object-cover" />
-        <p className="mb-4 text-slate-700">{tool.description}</p>
-        <dl className="grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
-          <div><dt className="font-semibold">Customization</dt><dd>{tool.customization}</dd></div>
-          <div><dt className="font-semibold">Accessibility</dt><dd>{tool.accessibility}</dd></div>
-          <div><dt className="font-semibold">Persistence</dt><dd>{tool.persistence}</dd></div>
-          <div><dt className="font-semibold">Category</dt><dd>{tool.layer}</dd></div>
-          <div><dt className="font-semibold">Target</dt><dd>{tool.target}</dd></div>
-          <div><dt className="font-semibold">Example Platforms</dt><dd>{tool.examplePlatforms}</dd></div>
-        </dl>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          <Link to={`/tool/${tool.id}`} className="rounded bg-slate-800 px-3 py-1 text-sm text-white">Open full detail page</Link>
+        <div className={`mb-4 ${isTallImage ? 'md:grid md:grid-cols-[200px_minmax(0,1fr)] md:gap-4' : 'space-y-4'}`}>
+          <div className={`overflow-hidden rounded-lg bg-slate-100 ${isTallImage ? 'h-[320px]' : 'max-h-[360px]'}`}>
+            <button
+              type="button"
+              onClick={() => setIsImageOpen(true)}
+              className="block h-full w-full cursor-zoom-in"
+              aria-label={`Open larger image for ${tool.name}`}
+            >
+              <img
+                src={tool.imageUrl}
+                alt={tool.name}
+                onLoad={(event) => {
+                  const { naturalWidth, naturalHeight } = event.currentTarget
+                  setIsTallImage(naturalHeight > naturalWidth * 1.15)
+                }}
+                className="h-full w-full object-contain"
+              />
+            </button>
+          </div>
+          <div>
+            <p className="mb-4 text-slate-700">{tool.description}</p>
+            <dl className="grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
+              <div><dt className="font-semibold">Customization</dt><dd>{tool.customization}</dd></div>
+              <div><dt className="font-semibold">Accessibility</dt><dd>{tool.accessibility}</dd></div>
+              <div><dt className="font-semibold">Persistence</dt><dd>{tool.persistence}</dd></div>
+              <div><dt className="font-semibold">Category</dt><dd>{tool.layer}</dd></div>
+              <div><dt className="font-semibold">Target</dt><dd>{tool.target}</dd></div>
+              <div><dt className="font-semibold">Example Platforms</dt><dd>{tool.examplePlatforms}</dd></div>
+            </dl>
+          </div>
         </div>
 
         <h3 className="mt-6 font-semibold">Related tools</h3>
-        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
-          {related.map((r) => <li key={r.id}>{r.name}</li>)}
+        <ul className="mt-2 space-y-1 text-sm">
+          {related.map((r) => (
+            <li key={r.id}>
+              <button
+                type="button"
+                onClick={() => onOpenTool(r)}
+                className="text-left text-indigo-700 underline-offset-2 hover:underline"
+              >
+                {r.name}
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
+      {isImageOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/90 p-4" role="dialog" aria-modal="true" aria-label={`${tool.name} image preview`}>
+          <button
+            type="button"
+            onClick={() => setIsImageOpen(false)}
+            className="absolute right-4 top-4 rounded-md bg-white px-3 py-1.5 text-sm font-semibold text-slate-900 hover:bg-slate-100"
+            aria-label="Close image preview"
+          >
+            X
+          </button>
+          <img
+            src={tool.imageUrl}
+            alt={tool.name}
+            className="max-h-[90vh] max-w-[90vw] rounded-lg object-contain"
+          />
+        </div>
+      )}
     </div>
   )
 }

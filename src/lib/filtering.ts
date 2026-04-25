@@ -13,6 +13,18 @@ export const createDefaultFilters = (): Filters => ({
 const inSet = (selected: string[], value: string) =>
   selected.length === 0 || selected.includes(value)
 
+export const splitMultiValue = (value: string): string[] =>
+  value
+    .split(',')
+    .map((part) => part.trim())
+    .filter(Boolean)
+
+const matchesAnyToken = (selected: string[], value: string) => {
+  if (selected.length === 0) return true
+  const tokens = splitMultiValue(value).map((token) => token.toLowerCase())
+  return selected.some((choice) => tokens.includes(choice.toLowerCase()))
+}
+
 export const scoreSearch = (tool: Tool, search: string): number => {
   const q = search.trim().toLowerCase()
   if (!q) return 1
@@ -28,11 +40,8 @@ export const filterTools = (tools: Tool[], filters: Filters): Tool[] => {
   return tools
     .filter((tool) => {
       if (!inSet(filters.categories, tool.category)) return false
-      if (!inSet(filters.customizations, tool.customization)) return false
-      if (!inSet(filters.layers, tool.layer)) return false
-      if (!inSet(filters.targets, tool.target)) return false
-      if (!inSet(filters.accessibilities, tool.accessibility)) return false
-      if (!inSet(filters.persistences, tool.persistence)) return false
+      if (!matchesAnyToken(filters.targets, tool.target)) return false
+      if (!matchesAnyToken(filters.accessibilities, tool.accessibility)) return false
 
       if (!filters.search.trim()) return true
       return scoreSearch(tool, filters.search) > 0
@@ -44,4 +53,9 @@ export const uniqueValues = (tools: Tool[], key: keyof Tool): string[] => {
   return [...new Set(tools.map((tool) => tool[key] as string))].sort((a, b) =>
     a.localeCompare(b),
   )
+}
+
+export const uniqueSplitValues = (tools: Tool[], key: keyof Pick<Tool, 'target' | 'accessibility'>): string[] => {
+  const values = tools.flatMap((tool) => splitMultiValue(tool[key]))
+  return [...new Set(values)].sort((a, b) => a.localeCompare(b))
 }

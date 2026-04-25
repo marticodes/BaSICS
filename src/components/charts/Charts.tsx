@@ -11,13 +11,21 @@ import {
 } from 'recharts'
 
 const colors = ['#4f46e5', '#0ea5e9', '#f59e0b', '#10b981', '#ef4444', '#8b5cf6', '#14b8a6']
+const colorBySegment = (segment: string) => {
+  let hash = 0
+  for (let i = 0; i < segment.length; i += 1) {
+    hash = (hash << 5) - hash + segment.charCodeAt(i)
+    hash |= 0
+  }
+  return colors[Math.abs(hash) % colors.length]
+}
 
 export const CategoryBar = ({ data }: { data: { category: string; value: number }[] }) => (
   <ResponsiveContainer width="100%" height={280}>
     <BarChart data={data}>
       <XAxis dataKey="category" hide />
       <YAxis />
-      <Tooltip />
+      <Tooltip formatter={(value) => [value, 'Tools']} />
       <Bar dataKey="value" fill="#4f46e5" radius={[8, 8, 0, 0]} />
     </BarChart>
   </ResponsiveContainer>
@@ -38,28 +46,68 @@ export const AccessibilityDonut = ({ data }: { data: { accessibility: string; va
 export const SelectionPie = ({
   data,
   title,
+  compact = false,
 }: {
   data: { segment: string; value: number }[]
   title: string
-}) => (
-  <div>
-    <h3 className="mb-1 text-sm font-semibold text-slate-800">{title}</h3>
-    {data.length === 0 ? (
-      <p className="text-xs text-slate-500">No data</p>
-    ) : (
-      <ResponsiveContainer width="100%" height={200}>
-        <PieChart>
-          <Pie data={data} dataKey="value" nameKey="segment" innerRadius={48} outerRadius={78} paddingAngle={1}>
-            {data.map((row, idx) => (
-              <Cell key={`${row.segment}-${idx}`} fill={colors[idx % colors.length]} />
-            ))}
-          </Pie>
-          <Tooltip />
-        </PieChart>
-      </ResponsiveContainer>
-    )}
-  </div>
-)
+  compact?: boolean
+}) => {
+  const total = data.reduce((sum, row) => sum + row.value, 0)
+  const chartHeight = compact ? 154 : 200
+  const innerRadius = compact ? 36 : 48
+  const outerRadius = compact ? 58 : 78
+
+  return (
+    <div>
+      <h3 className="mb-1 text-sm font-semibold text-slate-800">{title}</h3>
+      {data.length === 0 ? (
+        <p className="text-xs text-slate-500">No data</p>
+      ) : (
+        <>
+          <ResponsiveContainer width="100%" height={chartHeight}>
+            <PieChart>
+              <Pie
+                data={data}
+                dataKey="value"
+                nameKey="segment"
+                innerRadius={innerRadius}
+                outerRadius={outerRadius}
+                paddingAngle={1}
+                label={({ value }) => String(value)}
+                labelLine={false}
+              >
+                {data.map((row) => (
+                  <Cell key={row.segment} fill={colorBySegment(row.segment)} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+          <ul className="mt-1.5 space-y-1 text-xs text-slate-700">
+            {data.map((row) => {
+              const pct = total > 0 ? Math.round((row.value / total) * 100) : 0
+              return (
+                <li key={`legend-${row.segment}`} className="flex items-center justify-between gap-2">
+                  <span className="inline-flex items-center gap-2">
+                    <span
+                      className="h-2.5 w-2.5 rounded-full"
+                      style={{ backgroundColor: colorBySegment(row.segment) }}
+                      aria-hidden
+                    />
+                    <span>{row.segment}</span>
+                  </span>
+                  <span className="font-medium text-slate-900">
+                    {row.value} ({pct}%)
+                  </span>
+                </li>
+              )
+            })}
+          </ul>
+        </>
+      )}
+    </div>
+  )
+}
 
 export const MatrixBar = ({ data, keys }: { data: Record<string, string | number>[]; keys: string[] }) => (
   <ResponsiveContainer width="100%" height={300}>
