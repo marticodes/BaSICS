@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { Tool } from '../types'
 
 interface Props {
@@ -11,6 +11,12 @@ interface Props {
 export const ToolDetailModal = ({ tool, tools, onClose, onOpenTool }: Props) => {
   const [isTallImage, setIsTallImage] = useState(false)
   const [isImageOpen, setIsImageOpen] = useState(false)
+
+  useEffect(() => {
+    setIsTallImage(false)
+    setIsImageOpen(false)
+  }, [tool.id])
+
   const related = tools
     .filter((t) => t.id !== tool.id)
     .filter((t) => t.category === tool.category || t.layer === tool.layer || t.target === tool.target)
@@ -28,21 +34,22 @@ export const ToolDetailModal = ({ tool, tools, onClose, onOpenTool }: Props) => 
         </div>
 
         <div className={`mb-4 ${isTallImage ? 'md:grid md:grid-cols-[200px_minmax(0,1fr)] md:gap-4' : 'space-y-4'}`}>
-          <div className={`overflow-hidden rounded-lg bg-slate-100 ${isTallImage ? 'h-[320px]' : 'max-h-[360px]'}`}>
+          <div className={`rounded-lg bg-slate-100 ${isTallImage ? 'h-[320px]' : 'h-[260px]'}`}>
             <button
               type="button"
               onClick={() => setIsImageOpen(true)}
-              className="block h-full w-full cursor-zoom-in"
+              className="flex h-full w-full cursor-zoom-in items-center justify-center p-2"
               aria-label={`Open larger image for ${tool.name}`}
             >
               <img
+                key={tool.id}
                 src={tool.imageUrl}
                 alt={tool.name}
                 onLoad={(event) => {
                   const { naturalWidth, naturalHeight } = event.currentTarget
                   setIsTallImage(naturalHeight > naturalWidth * 1.15)
                 }}
-                className="h-full w-full object-contain"
+                className="max-h-full max-w-full h-auto w-auto object-contain"
               />
             </button>
           </div>
