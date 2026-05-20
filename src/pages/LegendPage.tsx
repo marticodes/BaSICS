@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import type { LegendEntry, LegendSection } from '../data/legend'
-import { legendSections } from '../data/legend'
+import { legendSections, toLegendAnchorId } from '../data/legend'
 
 const clustersSection = legendSections.find((s) => s.title === 'Clusters')
 const targetSection = legendSections.find((s) => s.title === 'Target')
@@ -9,27 +9,31 @@ const sidebarSections = legendSections.filter(
   (s) => s.title !== 'Clusters' && s.title !== 'Target',
 )
 
-const toAnchorId = (title: string) => title.toLowerCase().replace(/\s+/g, '-')
-
 const LegendTable = ({ section }: { section: LegendSection }) => (
   <article
-    id={toAnchorId(section.title)}
+    id={toLegendAnchorId(section.title)}
     className="scroll-mt-28 overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm ring-1 ring-slate-900/5"
   >
     <div className="border-b border-slate-200 bg-gradient-to-r from-indigo-50/80 to-white px-4 py-3">
       <h2 className="text-base font-semibold text-slate-900">{section.title}</h2>
+      {section.sectionDescription ? (
+        <p className="mt-1 text-sm leading-relaxed text-slate-600">{section.sectionDescription}</p>
+      ) : null}
     </div>
     <div className="overflow-x-auto">
       <table className="w-full border-collapse text-left text-sm">
         <thead>
-          <tr className="border-b border-slate-200 bg-slate-50/90">
+          <tr className="border-b border-indigo-200 bg-indigo-100">
             <th
               scope="col"
-              className="w-[min(11rem,28%)] whitespace-nowrap px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-slate-600"
+              className="w-[min(11rem,28%)] whitespace-nowrap px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-indigo-950"
             >
               Name
             </th>
-            <th scope="col" className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-slate-600">
+            <th
+              scope="col"
+              className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-indigo-950"
+            >
               Description
             </th>
           </tr>

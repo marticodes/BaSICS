@@ -1,6 +1,6 @@
-# Tool Atlas
+# BASICS tool page
 
-A production-ready, responsive data visualization app for exploring JSON tool datasets.
+Best way to visualize basics tools 
 
 ## Stack
 
@@ -9,22 +9,6 @@ A production-ready, responsive data visualization app for exploring JSON tool da
 - React Router
 - Recharts
 - Vitest
-
-## Features
-
-- Overview dashboard with KPI cards and charts
-- Global multi-filter sidebar + text search
-- Active filter chips + reset all
-- Category explorer with collapsible groups and sorting
-- Interactive tool map with color coding and hover descriptions
-- Tool detail modal + dedicated detail route
-- Related tools suggestions
-- Custom groups and subgroups (saved in `localStorage`)
-- Group analytics and export to JSON/CSV
-- Filter presets (saved in `localStorage`)
-- Compare two groups side-by-side
-- Graceful null handling (`Unknown`)
-- Accessible controls (labels, keyboard-friendly inputs, high contrast)
 
 ## Data setup
 

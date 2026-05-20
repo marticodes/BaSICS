@@ -80,7 +80,7 @@ export const ToolMapPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool
   return (
     <section className="space-y-4">
       <div>
-        <h1 className="text-2xl font-bold">Interactive Tool Map</h1>
+        <h1 className="text-2xl font-bold">Old Map</h1>
         <p className="text-sm text-slate-600">
           Click a card to select or deselect tools. Use <span className="font-medium">Details</span> to open full
           info. Selected tools show distribution charts on the right.

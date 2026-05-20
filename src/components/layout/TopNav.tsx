@@ -3,9 +3,7 @@ import { NavLink } from 'react-router-dom'
 const links = [
   ['/', 'Dashboard'],
   ['/legend', 'Legend'],
-  ['/layers', 'Categories'],
-  ['/map', 'Tool Map'],
-  ['/page-test', 'Page Test'],
+  ['/page-test', 'Tool Map'],
 ]
 
 export const TopNav = () => {

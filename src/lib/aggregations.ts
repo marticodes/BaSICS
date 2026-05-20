@@ -1,3 +1,4 @@
+import { splitMultiValue } from './filtering'
 import type { Group, Tool } from '../types'
 
 const tally = (values: string[]) => {
@@ -64,12 +65,20 @@ export const layerCategoryFlow = (tools: Tool[]) => {
     .sort((a, b) => b.value - a.value)
 }
 
+const tokensForField = (tool: Tool, key: keyof Tool): string[] => {
+  const raw = String(tool[key]).trim()
+  if (!raw) return []
+  if (key === 'accessibility' || key === 'target') return splitMultiValue(raw)
+  return [raw]
+}
+
 /** Count tools by a string field (e.g. customization, accessibility) for selection stats. */
 export const tallyByField = (tools: Tool[], key: keyof Tool) => {
   const map = new Map<string, number>()
   for (const tool of tools) {
-    const v = String(tool[key])
-    map.set(v, (map.get(v) ?? 0) + 1)
+    for (const token of tokensForField(tool, key)) {
+      map.set(token, (map.get(token) ?? 0) + 1)
+    }
   }
   return [...map.entries()]
     .map(([segment, value]) => ({ segment, value }))

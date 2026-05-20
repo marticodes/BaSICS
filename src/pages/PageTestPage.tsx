@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import { SelectionPie } from '../components/charts/Charts'
+import { TemporaryToolCreator } from '../components/TemporaryToolCreator'
 import { ToolDetailModal } from '../components/ToolDetailModal'
 import { tallyByField } from '../lib/aggregations'
 import type { Tool } from '../types'
@@ -20,6 +21,7 @@ type LayerGroup = {
 export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool[] }) => {
   const [openTool, setOpenTool] = useState<Tool | null>(null)
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set())
+  const [temporaryTool, setTemporaryTool] = useState<Tool | null>(null)
 
   const toggleSelect = useCallback((id: string) => {
     setSelectedIds((prev) => {
@@ -35,6 +37,16 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
   const selectedTools = useMemo(
     () => tools.filter((tool) => selectedIds.has(tool.id)),
     [tools, selectedIds],
+  )
+
+  const toolsForStats = useMemo(() => {
+    if (!temporaryTool) return selectedTools
+    return [...selectedTools, temporaryTool]
+  }, [selectedTools, temporaryTool])
+
+  const explorerKey = useMemo(
+    () => tools.map((tool) => tool.id).sort().join(','),
+    [tools],
   )
 
   const layers = useMemo<LayerGroup[]>(() => {
@@ -62,19 +74,23 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
       .sort((a, b) => b.toolsCount - a.toolsCount)
   }, [tools])
 
-  const categoryPie = useMemo(() => tallyByField(selectedTools, 'category'), [selectedTools])
-  const targetPie = useMemo(() => tallyByField(selectedTools, 'target'), [selectedTools])
+  const categoryPie = useMemo(() => tallyByField(toolsForStats, 'category'), [toolsForStats])
+  const targetPie = useMemo(() => tallyByField(toolsForStats, 'target'), [toolsForStats])
+  const customizationPie = useMemo(
+    () => tallyByField(toolsForStats, 'customization'),
+    [toolsForStats],
+  )
   const accessibilityPie = useMemo(
-    () => tallyByField(selectedTools, 'accessibility'),
-    [selectedTools],
+    () => tallyByField(toolsForStats, 'accessibility'),
+    [toolsForStats],
   )
 
   return (
     <section className="space-y-4">
       <div>
-        <h1 className="text-2xl font-bold">Page Test</h1>
+        <h1 className="text-2xl font-bold">Tool Map</h1>
         <p className="text-sm text-slate-600">
-          Combined view: grouped category explorer with selectable tools and live charts.
+        Click a card to select or deselect tools. Use Details to open full info. Selected tools show distribution charts on the right.
         </p>
       </div>
 
@@ -95,7 +111,7 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
             )}
           </div>
 
-          <div className="grid gap-3 md:grid-cols-2">
+          <div key={explorerKey} className="grid gap-3 md:grid-cols-2">
             {layers.map((layer, index) => (
               <article
                 key={layer.layer}
@@ -110,7 +126,6 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
                     <details
                       key={`${layer.layer}-${category}`}
                       className="rounded-lg bg-white/85 p-2"
-                      open={categoryTools.length <= 4}
                     >
                       <summary className="cursor-pointer text-sm font-medium text-slate-800">
                         {category} ({categoryTools.length})
@@ -159,23 +174,36 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
         </div>
 
         <aside
-          className="h-fit rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm xl:sticky xl:top-24"
+          className="flex h-fit flex-col gap-0 xl:sticky xl:top-24"
           aria-label="Selection statistics"
         >
-          {selectedTools.length === 0 ? (
-            <p className="text-sm text-slate-500">
-              Select one or more tools from the grouped explorer to see distribution charts.
-            </p>
-          ) : (
-            <div className="space-y-4">
-              <p className="text-sm font-medium text-slate-800">
-                Statistics for {selectedTools.length} tool{selectedTools.length === 1 ? '' : 's'}
+          <div className="rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm">
+            <TemporaryToolCreator
+              allTools={allTools}
+              tool={temporaryTool}
+              onCreate={setTemporaryTool}
+              onRemove={() => setTemporaryTool(null)}
+            />
+          </div>
+
+          <div className="mt-3 rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm">
+            {toolsForStats.length === 0 ? (
+              <p className="text-sm text-slate-500">
+                Select one or more tools from the grouped explorer to see distribution charts.
               </p>
-              <SelectionPie data={categoryPie} title="Cluster distribution" compact />
-              <SelectionPie data={targetPie} title="Target distribution" compact />
-              <SelectionPie data={accessibilityPie} title="Tool accessibility" compact />
-            </div>
-          )}
+            ) : (
+              <div className="space-y-4">
+                <p className="text-sm font-medium text-slate-800">
+                  Statistics for {toolsForStats.length} tool{toolsForStats.length === 1 ? '' : 's'}
+                  {temporaryTool && selectedTools.length > 0 ? ' (includes temporary)' : null}
+                </p>
+                <SelectionPie data={categoryPie} title="Cluster distribution" compact />
+                <SelectionPie data={targetPie} title="Target distribution" compact />
+                <SelectionPie data={customizationPie} title="Customization distribution" compact />
+                <SelectionPie data={accessibilityPie} title="Tool accessibility" compact />
+              </div>
+            )}
+          </div>
         </aside>
       </div>
 

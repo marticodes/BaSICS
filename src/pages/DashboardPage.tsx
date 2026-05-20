@@ -12,6 +12,8 @@ import {
   layerDistribution,
   toolsPerCategory,
 } from '../lib/aggregations'
+import { InfoTooltip } from '../components/InfoTooltip'
+import { legendSectionDescriptionByAnchor } from '../data/legend'
 import type { Tool } from '../types'
 
 export const DashboardPage = ({ tools }: { tools: Tool[] }) => {
@@ -34,10 +36,26 @@ export const DashboardPage = ({ tools }: { tools: Tool[] }) => {
           label="Clusters"
           value={new Set(tools.map((tool) => tool.category)).size}
           to="/legend?section=clusters"
+          tooltip={legendSectionDescriptionByAnchor.clusters}
         />
-        <Stat label="Customization levels" value={customCounts.length} to="/legend?section=customization" />
-        <Stat label="Accessibility types" value={accessData.length} to="/legend?section=tool-accessibility" />
-        <Stat label="Target types" value={new Set(tools.map((t) => t.target)).size} to="/legend?section=target" />
+        <Stat
+          label="Customization levels"
+          value={customCounts.length}
+          to="/legend?section=customization"
+          tooltip={legendSectionDescriptionByAnchor.customization}
+        />
+        <Stat
+          label="Accessibility types"
+          value={accessData.length}
+          to="/legend?section=tool-accessibility"
+          tooltip={legendSectionDescriptionByAnchor['tool-accessibility']}
+        />
+        <Stat
+          label="Target types"
+          value={new Set(tools.map((t) => t.target)).size}
+          to="/legend?section=target"
+          tooltip={legendSectionDescriptionByAnchor.target}
+        />
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
         <ChartCard title="Tools per cluster"><CategoryBar data={categoryData as { category: string; value: number }[]} /></ChartCard>
@@ -52,19 +70,22 @@ export const DashboardPage = ({ tools }: { tools: Tool[] }) => {
   )
 }
 
-const Stat = ({ label, value, to }: { label: string; value: number; to?: string }) => {
+const Stat = ({
+  label,
+  value,
+  to,
+  tooltip,
+}: {
+  label: string
+  value: number
+  to?: string
+  tooltip?: string
+}) => {
   const content = (
     <>
       <p className="text-sm text-slate-500">
         {label}
-        {to ? (
-          <span
-            className="ml-1 inline-flex h-4 w-4 items-center justify-center rounded-full border border-slate-300 text-[10px] font-semibold text-slate-500"
-            aria-hidden
-          >
-            i
-          </span>
-        ) : null}
+        {tooltip ? <InfoTooltip content={tooltip} className="ml-1" /> : null}
       </p>
       <p className="text-2xl font-semibold text-slate-900">{value}</p>
     </>

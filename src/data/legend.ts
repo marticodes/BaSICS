@@ -5,12 +5,18 @@ export interface LegendEntry {
 
 export interface LegendSection {
   title: string
+  /** Short overview shown on the Legend page and dashboard stat tooltips. */
+  sectionDescription?: string
   entries: LegendEntry[]
 }
+
+export const toLegendAnchorId = (title: string) => title.toLowerCase().replace(/\s+/g, '-')
 
 export const legendSections: LegendSection[] = [
   {
     title: 'Clusters',
+    sectionDescription:
+      'Clusters organize moderation tools into meaningful groups based on affinity in their functional goals',
     entries: [
       {
         name: 'Privacy',
@@ -91,6 +97,8 @@ export const legendSections: LegendSection[] = [
   },
   {
     title: 'Customization',
+    sectionDescription:
+      'Describes how flexible a tool is in its configuration',
     entries: [
       {
         name: 'Low',
@@ -114,6 +122,8 @@ export const legendSections: LegendSection[] = [
   },
   {
     title: 'Target',
+    sectionDescription:
+      'Describes the scope of the tool\'s impact',
     entries: [
       {
         name: 'Feed',
@@ -149,6 +159,8 @@ export const legendSections: LegendSection[] = [
   },
   {
     title: 'Tool Accessibility',
+    sectionDescription:
+      'Describes which roles can use or configure the tool.',
     entries: [
       {
         name: 'Power User',
@@ -168,6 +180,8 @@ export const legendSections: LegendSection[] = [
   },
   {
     title: 'Tool Persistence',
+    sectionDescription:
+    'Describes the duration or frequency of the tool\'s impact.',
     entries: [
       {
         name: 'Adhoc',
@@ -181,3 +195,9 @@ export const legendSections: LegendSection[] = [
     ],
   },
 ]
+
+export const legendSectionDescriptionByAnchor = Object.fromEntries(
+  legendSections
+    .filter((s) => s.sectionDescription)
+    .map((s) => [toLegendAnchorId(s.title), s.sectionDescription as string]),
+)
