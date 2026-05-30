@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { splitMultiValue, uniqueSplitValues, uniqueValues } from '../lib/filtering'
 import type { Tool } from '../types'
-import { uniqueSplitValues, uniqueValues } from '../lib/filtering'
 
 export type TemporaryToolDraft = {
   name: string
   description: string
   accessibilities: string[]
-  customization: string
+  layer: string
   targets: string[]
 }
 
@@ -15,19 +15,27 @@ const emptyDraft = (): TemporaryToolDraft => ({
   name: '',
   description: '',
   accessibilities: [],
-  customization: '',
+  layer: '',
   targets: [],
 })
 
-export const buildTemporaryTool = (draft: TemporaryToolDraft): Tool => ({
-  id: `temp-${crypto.randomUUID()}`,
+const toolToDraft = (tool: Tool): TemporaryToolDraft => ({
+  name: tool.name,
+  description: tool.description,
+  accessibilities: splitMultiValue(tool.accessibility),
+  layer: tool.layer,
+  targets: splitMultiValue(tool.target),
+})
+
+export const buildTemporaryTool = (draft: TemporaryToolDraft, existingId?: string): Tool => ({
+  id: existingId ?? `temp-${crypto.randomUUID()}`,
   name: draft.name.trim(),
   description: draft.description.trim(),
   accessibility: draft.accessibilities.join(', '),
-  customization: draft.customization,
+  customization: '',
   target: draft.targets.join(', '),
   category: 'Custom',
-  layer: 'Custom',
+  layer: draft.layer,
   examplePlatforms: '',
   persistence: '',
   imageUrl: '',
@@ -35,9 +43,10 @@ export const buildTemporaryTool = (draft: TemporaryToolDraft): Tool => ({
 
 type Props = {
   allTools: Tool[]
-  tool: Tool | null
+  ideas: Tool[]
   onCreate: (tool: Tool) => void
-  onRemove: () => void
+  onUpdate: (tool: Tool) => void
+  onRemove: (id: string) => void
 }
 
 const fieldClass =
@@ -116,13 +125,14 @@ const SingleSelect = ({
   </fieldset>
 )
 
-export const TemporaryToolCreator = ({ allTools, tool, onCreate, onRemove }: Props) => {
+export const TemporaryToolCreator = ({ allTools, ideas, onCreate, onUpdate, onRemove }: Props) => {
   const [showModal, setShowModal] = useState(false)
+  const [editingId, setEditingId] = useState<string | null>(null)
   const [draft, setDraft] = useState<TemporaryToolDraft>(emptyDraft)
 
   const options = useMemo(
     () => ({
-      customizations: uniqueValues(allTools, 'customization'),
+      layers: uniqueValues(allTools, 'layer'),
       targets: uniqueSplitValues(allTools, 'target'),
       accessibilities: uniqueSplitValues(allTools, 'accessibility'),
     }),
@@ -143,7 +153,20 @@ export const TemporaryToolCreator = ({ allTools, tool, onCreate, onRemove }: Pro
     })
   }
 
+  const openCreateModal = () => {
+    setEditingId(null)
+    setDraft(emptyDraft())
+    setShowModal(true)
+  }
+
+  const openEditModal = (tool: Tool) => {
+    setEditingId(tool.id)
+    setDraft(toolToDraft(tool))
+    setShowModal(true)
+  }
+
   const closeModal = () => {
+    setEditingId(null)
     setDraft(emptyDraft())
     setShowModal(false)
   }
@@ -151,10 +174,7 @@ export const TemporaryToolCreator = ({ allTools, tool, onCreate, onRemove }: Pro
   useEffect(() => {
     if (!showModal) return
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setDraft(emptyDraft())
-        setShowModal(false)
-      }
+      if (event.key === 'Escape') closeModal()
     }
     const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
@@ -168,17 +188,21 @@ export const TemporaryToolCreator = ({ allTools, tool, onCreate, onRemove }: Pro
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
     if (!draft.name.trim()) return
-    if (draft.accessibilities.length === 0 || !draft.customization || draft.targets.length === 0) return
+    if (draft.accessibilities.length === 0 || !draft.layer || draft.targets.length === 0) return
 
-    onCreate(buildTemporaryTool(draft))
+    const tool = buildTemporaryTool(draft, editingId ?? undefined)
+    if (editingId) onUpdate(tool)
+    else onCreate(tool)
     closeModal()
   }
 
   const canSubmit =
     draft.name.trim().length > 0 &&
     draft.accessibilities.length > 0 &&
-    draft.customization.length > 0 &&
+    draft.layer.length > 0 &&
     draft.targets.length > 0
+
+  const isEditing = editingId !== null
 
   const modal =
     showModal &&
@@ -187,7 +211,7 @@ export const TemporaryToolCreator = ({ allTools, tool, onCreate, onRemove }: Pro
         className="fixed inset-0 z-[200] flex items-center justify-center bg-slate-900/70 p-4 backdrop-blur-[2px]"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="temp-tool-dialog-title"
+        aria-labelledby="new-tool-idea-dialog-title"
         onClick={closeModal}
       >
         <div
@@ -196,8 +220,8 @@ export const TemporaryToolCreator = ({ allTools, tool, onCreate, onRemove }: Pro
         >
           <div className="mb-4 flex items-start justify-between gap-3">
             <div>
-              <h2 id="temp-tool-dialog-title" className="text-lg font-semibold text-slate-900">
-                Create temporary tool
+              <h2 id="new-tool-idea-dialog-title" className="text-lg font-semibold text-slate-900">
+                {isEditing ? 'Edit new tool idea' : 'Create new tool idea'}
               </h2>
               <p className="mt-0.5 text-sm text-slate-600">
                 Not saved to the database. Shown in the sidebar after you add it.
@@ -216,11 +240,11 @@ export const TemporaryToolCreator = ({ allTools, tool, onCreate, onRemove }: Pro
             <div className="grid gap-5 md:grid-cols-2 md:items-start">
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="temp-tool-name" className={labelClass}>
+                  <label htmlFor="new-tool-idea-name" className={labelClass}>
                     Name
                   </label>
                   <input
-                    id="temp-tool-name"
+                    id="new-tool-idea-name"
                     value={draft.name}
                     onChange={(e) => update({ name: e.target.value })}
                     className={fieldClass}
@@ -229,11 +253,11 @@ export const TemporaryToolCreator = ({ allTools, tool, onCreate, onRemove }: Pro
                   />
                 </div>
                 <div>
-                  <label htmlFor="temp-tool-description" className={labelClass}>
+                  <label htmlFor="new-tool-idea-description" className={labelClass}>
                     Description
                   </label>
                   <textarea
-                    id="temp-tool-description"
+                    id="new-tool-idea-description"
                     value={draft.description}
                     onChange={(e) => update({ description: e.target.value })}
                     rows={8}
@@ -251,11 +275,11 @@ export const TemporaryToolCreator = ({ allTools, tool, onCreate, onRemove }: Pro
                   onToggle={(value) => toggleList('accessibilities', value)}
                 />
                 <SingleSelect
-                  title="Customization"
-                  name="temp-tool-customization"
-                  values={options.customizations}
-                  selected={draft.customization}
-                  onSelect={(value) => update({ customization: value })}
+                  title="Layer"
+                  name="new-tool-idea-layer"
+                  values={options.layers}
+                  selected={draft.layer}
+                  onSelect={(value) => update({ layer: value })}
                 />
                 <MultiSelect
                   title="Target"
@@ -271,7 +295,7 @@ export const TemporaryToolCreator = ({ allTools, tool, onCreate, onRemove }: Pro
               disabled={!canSubmit}
               className="mt-5 w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              Add tool
+              {isEditing ? 'Save changes' : 'Add tool idea'}
             </button>
           </form>
         </div>
@@ -283,54 +307,69 @@ export const TemporaryToolCreator = ({ allTools, tool, onCreate, onRemove }: Pro
     <>
       <button
         type="button"
-        onClick={() => setShowModal(true)}
+        onClick={openCreateModal}
         className="w-full rounded-lg border border-indigo-200 bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-800 transition hover:border-indigo-300 hover:bg-indigo-100"
       >
-        Create temporary tool
+        Create new tool idea
       </button>
 
-      {tool && (
-        <article className="mt-3 rounded-lg border border-indigo-200 bg-gradient-to-b from-indigo-50/90 to-white p-3 shadow-sm ring-1 ring-indigo-500/10">
-          <div className="flex items-start justify-between gap-2">
-            <div className="min-w-0 flex-1">
-              <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">Temporary tool</p>
-              <h3 className="mt-1 font-semibold text-slate-900">{tool.name}</h3>
-              {tool.description ? (
-                <p className="mt-1 text-sm leading-relaxed text-slate-600">{tool.description}</p>
-              ) : (
-                <p className="mt-1 text-sm italic text-slate-400">No description</p>
-              )}
-            </div>
-            <button
-              type="button"
-              onClick={onRemove}
-              className="shrink-0 rounded border border-slate-300 bg-white px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50"
-              aria-label="Remove temporary tool"
-            >
-              Remove
-            </button>
-          </div>
-          <dl className="mt-2 flex flex-wrap gap-1.5 text-xs">
-            <div className="rounded-full bg-white px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">
-              <dt className="sr-only">Accessibility</dt>
-              <dd>
-                <span className="font-medium text-slate-500">Accessibility:</span> {tool.accessibility}
-              </dd>
-            </div>
-            <div className="rounded-full bg-white px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">
-              <dt className="sr-only">Customization</dt>
-              <dd>
-                <span className="font-medium text-slate-500">Customization:</span> {tool.customization}
-              </dd>
-            </div>
-            <div className="rounded-full bg-white px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">
-              <dt className="sr-only">Target</dt>
-              <dd>
-                <span className="font-medium text-slate-500">Target:</span> {tool.target}
-              </dd>
-            </div>
-          </dl>
-        </article>
+      {ideas.length > 0 && (
+        <ul className="mt-3 space-y-3" aria-label="New tool ideas">
+          {ideas.map((tool) => (
+            <li key={tool.id}>
+              <article className="rounded-lg border border-indigo-200 bg-gradient-to-b from-indigo-50/90 to-white p-3 shadow-sm ring-1 ring-indigo-500/10">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">New tool idea</p>
+                    <h3 className="mt-1 font-semibold text-slate-900">{tool.name}</h3>
+                    {tool.description ? (
+                      <p className="mt-1 text-sm leading-relaxed text-slate-600">{tool.description}</p>
+                    ) : (
+                      <p className="mt-1 text-sm italic text-slate-400">No description</p>
+                    )}
+                  </div>
+                  <div className="flex shrink-0 flex-col gap-1">
+                    <button
+                      type="button"
+                      onClick={() => openEditModal(tool)}
+                      className="rounded border border-indigo-200 bg-white px-2 py-1 text-xs font-medium text-indigo-700 hover:bg-indigo-50"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => onRemove(tool.id)}
+                      className="rounded border border-slate-300 bg-white px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50"
+                      aria-label={`Remove ${tool.name}`}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+                <dl className="mt-2 flex flex-wrap gap-1.5 text-xs">
+                  <div className="rounded-full bg-white px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">
+                    <dt className="sr-only">Accessibility</dt>
+                    <dd>
+                      <span className="font-medium text-slate-500">Accessibility:</span> {tool.accessibility}
+                    </dd>
+                  </div>
+                  <div className="rounded-full bg-white px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">
+                    <dt className="sr-only">Layer</dt>
+                    <dd>
+                      <span className="font-medium text-slate-500">Layer:</span> {tool.layer}
+                    </dd>
+                  </div>
+                  <div className="rounded-full bg-white px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">
+                    <dt className="sr-only">Target</dt>
+                    <dd>
+                      <span className="font-medium text-slate-500">Target:</span> {tool.target}
+                    </dd>
+                  </div>
+                </dl>
+              </article>
+            </li>
+          ))}
+        </ul>
       )}
 
       {modal}

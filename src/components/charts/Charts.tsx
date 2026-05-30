@@ -20,6 +20,44 @@ const colorBySegment = (segment: string) => {
   return colors[Math.abs(hash) % colors.length]
 }
 
+const pieSliceLabel = ({
+  cx = 0,
+  cy = 0,
+  midAngle = 0,
+  innerRadius = 0,
+  outerRadius = 0,
+  value = 0,
+}: {
+  cx?: number
+  cy?: number
+  midAngle?: number
+  innerRadius?: number
+  outerRadius?: number
+  value?: number
+}) => {
+  if (!value) return null
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.52
+  const radian = (-midAngle * Math.PI) / 180
+  const x = cx + radius * Math.cos(radian)
+  const y = cy + radius * Math.sin(radian)
+  return (
+    <text
+      x={x}
+      y={y}
+      fill="#fff"
+      textAnchor="middle"
+      dominantBaseline="central"
+      fontSize={11}
+      fontWeight={700}
+      stroke="#0f172a"
+      strokeWidth={2}
+      paintOrder="stroke"
+    >
+      {value}
+    </text>
+  )
+}
+
 export const CategoryBar = ({ data }: { data: { category: string; value: number }[] }) => (
   <ResponsiveContainer width="100%" height={280}>
     <BarChart data={data}>
@@ -65,7 +103,7 @@ export const SelectionPie = ({
       ) : (
         <>
           <ResponsiveContainer width="100%" height={chartHeight}>
-            <PieChart>
+            <PieChart margin={{ top: 4, right: 4, bottom: 4, left: 4 }}>
               <Pie
                 data={data}
                 dataKey="value"
@@ -73,7 +111,7 @@ export const SelectionPie = ({
                 innerRadius={innerRadius}
                 outerRadius={outerRadius}
                 paddingAngle={1}
-                label={({ value }) => String(value)}
+                label={pieSliceLabel}
                 labelLine={false}
               >
                 {data.map((row) => (

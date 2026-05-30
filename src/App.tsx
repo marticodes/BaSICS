@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { ActiveFilterChips } from './components/ActiveFilterChips'
 import { FilterSidebar } from './components/layout/FilterSidebar'
 import { TopNav } from './components/layout/TopNav'
+import { NewToolIdeasProvider } from './context/NewToolIdeasContext'
 import { useFilters } from './hooks/useFilters'
 import { useToolsData } from './hooks/useToolsData'
 import { DashboardPage } from './pages/DashboardPage'
@@ -31,6 +32,7 @@ function App() {
   const mainTools = useMemo(() => filteredTools, [filteredTools])
 
   return (
+    <NewToolIdeasProvider>
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <TopNav />
       <div className="mx-auto max-w-7xl px-4 py-4">
@@ -117,6 +119,7 @@ function App() {
         </main>
       </div>
     </div>
+    </NewToolIdeasProvider>
   )
 }
 

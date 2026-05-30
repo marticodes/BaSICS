@@ -2,6 +2,7 @@ import { useCallback, useMemo, useState } from 'react'
 import { SelectionPie } from '../components/charts/Charts'
 import { TemporaryToolCreator } from '../components/TemporaryToolCreator'
 import { ToolDetailModal } from '../components/ToolDetailModal'
+import { useNewToolIdeas } from '../context/NewToolIdeasContext'
 import { tallyByField } from '../lib/aggregations'
 import type { Tool } from '../types'
 
@@ -21,7 +22,7 @@ type LayerGroup = {
 export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool[] }) => {
   const [openTool, setOpenTool] = useState<Tool | null>(null)
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set())
-  const [temporaryTool, setTemporaryTool] = useState<Tool | null>(null)
+  const { ideas: newToolIdeas, addIdea, updateIdea, removeIdea } = useNewToolIdeas()
 
   const toggleSelect = useCallback((id: string) => {
     setSelectedIds((prev) => {
@@ -39,10 +40,10 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
     [tools, selectedIds],
   )
 
-  const toolsForStats = useMemo(() => {
-    if (!temporaryTool) return selectedTools
-    return [...selectedTools, temporaryTool]
-  }, [selectedTools, temporaryTool])
+  const toolsForStats = useMemo(
+    () => [...selectedTools, ...newToolIdeas],
+    [selectedTools, newToolIdeas],
+  )
 
   const explorerKey = useMemo(
     () => tools.map((tool) => tool.id).sort().join(','),
@@ -76,10 +77,7 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
 
   const categoryPie = useMemo(() => tallyByField(toolsForStats, 'category'), [toolsForStats])
   const targetPie = useMemo(() => tallyByField(toolsForStats, 'target'), [toolsForStats])
-  const customizationPie = useMemo(
-    () => tallyByField(toolsForStats, 'customization'),
-    [toolsForStats],
-  )
+  const layerPie = useMemo(() => tallyByField(toolsForStats, 'layer'), [toolsForStats])
   const accessibilityPie = useMemo(
     () => tallyByField(toolsForStats, 'accessibility'),
     [toolsForStats],
@@ -180,9 +178,10 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
           <div className="rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm">
             <TemporaryToolCreator
               allTools={allTools}
-              tool={temporaryTool}
-              onCreate={setTemporaryTool}
-              onRemove={() => setTemporaryTool(null)}
+              ideas={newToolIdeas}
+              onCreate={addIdea}
+              onUpdate={updateIdea}
+              onRemove={removeIdea}
             />
           </div>
 
@@ -195,11 +194,11 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
               <div className="space-y-4">
                 <p className="text-sm font-medium text-slate-800">
                   Statistics for {toolsForStats.length} tool{toolsForStats.length === 1 ? '' : 's'}
-                  {temporaryTool && selectedTools.length > 0 ? ' (includes temporary)' : null}
+                  {newToolIdeas.length > 0 && selectedTools.length > 0 ? ' (includes new tool ideas)' : null}
                 </p>
                 <SelectionPie data={categoryPie} title="Cluster distribution" compact />
                 <SelectionPie data={targetPie} title="Target distribution" compact />
-                <SelectionPie data={customizationPie} title="Customization distribution" compact />
+                <SelectionPie data={layerPie} title="Layer distribution" compact />
                 <SelectionPie data={accessibilityPie} title="Tool accessibility" compact />
               </div>
             )}
