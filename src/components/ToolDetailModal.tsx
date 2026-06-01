@@ -65,21 +65,6 @@ export const ToolDetailModal = ({ tool, tools, onClose, onOpenTool }: Props) => 
             </dl>
           </div>
         </div>
-
-        <h3 className="mt-6 font-semibold">Related tools</h3>
-        <ul className="mt-2 space-y-1 text-sm">
-          {related.map((r) => (
-            <li key={r.id}>
-              <button
-                type="button"
-                onClick={() => onOpenTool(r)}
-                className="text-left text-indigo-700 underline-offset-2 hover:underline"
-              >
-                {r.name}
-              </button>
-            </li>
-          ))}
-        </ul>
       </div>
       {isImageOpen && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/90 p-4" role="dialog" aria-modal="true" aria-label={`${tool.name} image preview`}>

@@ -42,10 +42,6 @@ export const ToolDetailPage = ({ tools }: { tools: Tool[] }) => {
           </dl>
         </div>
       </div>
-      <h2 className="mt-6 text-xl font-semibold">Related tools</h2>
-      <ul className="mt-2 list-disc pl-5">
-        {related.map((r) => <li key={r.id}>{r.name}</li>)}
-      </ul>
     </section>
   )
 }
