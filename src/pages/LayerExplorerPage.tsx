@@ -83,7 +83,6 @@ export const LayerExplorerPage = ({ tools, allTools }: { tools: Tool[]; allTools
           tool={open}
           tools={allTools}
           onClose={() => setOpen(null)}
-          onOpenTool={(tool) => setOpen(tool)}
         />
       )}
     </section>

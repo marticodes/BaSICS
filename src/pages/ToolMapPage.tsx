@@ -208,7 +208,6 @@ export const ToolMapPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool
           tool={detailTool}
           tools={allTools}
           onClose={() => setDetailTool(null)}
-          onOpenTool={(tool) => setDetailTool(tool)}
         />
       )}
     </section>

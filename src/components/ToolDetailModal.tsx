@@ -5,10 +5,9 @@ interface Props {
   tool: Tool
   tools: Tool[]
   onClose: () => void
-  onOpenTool: (tool: Tool) => void
 }
 
-export const ToolDetailModal = ({ tool, tools, onClose, onOpenTool }: Props) => {
+export const ToolDetailModal = ({ tool, onClose }: Props) => {
   const [isTallImage, setIsTallImage] = useState(false)
   const [isImageOpen, setIsImageOpen] = useState(false)
 
@@ -16,11 +15,6 @@ export const ToolDetailModal = ({ tool, tools, onClose, onOpenTool }: Props) => 
     setIsTallImage(false)
     setIsImageOpen(false)
   }, [tool.id])
-
-  const related = tools
-    .filter((t) => t.id !== tool.id)
-    .filter((t) => t.category === tool.category || t.layer === tool.layer || t.target === tool.target)
-    .slice(0, 4)
 
   return (
     <div className="fixed inset-0 z-50 grid place-items-center bg-slate-900/50 p-4" role="dialog" aria-modal="true" aria-label={`${tool.name} details`}>

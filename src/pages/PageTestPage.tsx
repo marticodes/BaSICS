@@ -211,7 +211,6 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
           tool={openTool}
           tools={allTools}
           onClose={() => setOpenTool(null)}
-          onOpenTool={(tool) => setOpenTool(tool)}
         />
       )}
     </section>

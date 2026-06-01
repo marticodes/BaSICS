@@ -9,11 +9,6 @@ export const ToolDetailPage = ({ tools }: { tools: Tool[] }) => {
 
   if (!tool) return <div className="rounded bg-white p-4">Tool not found.</div>
 
-  const related = tools
-    .filter((t) => t.id !== tool.id)
-    .filter((t) => t.category === tool.category || t.layer === tool.layer || t.target === tool.target)
-    .slice(0, 6)
-
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
       <h1 className="text-3xl font-bold">{tool.name}</h1>
