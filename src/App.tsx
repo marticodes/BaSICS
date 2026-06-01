@@ -111,7 +111,6 @@ function App() {
               <Route path="/layers" element={<LayerExplorerPage tools={mainTools} allTools={tools} />} />
               <Route path="/categories" element={<Navigate to="/layers" replace />} />
               <Route path="/map" element={<ToolMapPage tools={mainTools} allTools={tools} />} />
-              <Route path="/page-test" element={<PageTestPage tools={mainTools} allTools={tools} />} />
               <Route path="/tool/:toolId" element={<ToolDetailPage tools={tools} />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

@@ -5,7 +5,7 @@ import { downloadNewToolIdeas } from '../../lib/exportNewToolIdeas'
 const links = [
   ['/', 'Dashboard'],
   ['/legend', 'Legend'],
-  ['/page-test', 'Tool Map'],
+  ['/map', 'Tool Map'],
 ]
 
 const DownloadIcon = () => (
