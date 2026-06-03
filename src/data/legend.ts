@@ -96,27 +96,29 @@ export const legendSections: LegendSection[] = [
     ],
   },
   {
-    title: 'Customization',
+    title: 'Category',
     sectionDescription:
-      'Describes how flexible a tool is in its configuration',
+      'Categories describe where and how moderation tools sit in the BaSICS framework.',
     entries: [
       {
-        name: 'Low',
-        definition: 'The tool offers more than 2 options but less than 5.',
-      },
-      {
-        name: 'Medium',
+        name: 'Boundary',
         definition:
-          'The tool offers multiple options but the outcome is often controlled by the platform ultimately.',
+          'Users set, modify or withdraw their limits of engagement with content, users and platform.',
       },
       {
-        name: 'No',
-        definition: 'The tool offers only 2 options (yes or no, on and off).',
-      },
-      {
-        name: 'High',
+        name: 'Standards & Rules',
         definition:
-          'The tool can be well personalised by the user by choosing multiple options or introducing customized option.',
+          'Define and enforce community rules through access controls, automated regulation, and direct sanctions.',
+      },
+      {
+        name: 'In-Context',
+        definition:
+          'Provide users with relevant context, enable review, and communicate information to support informed decisions and governance.',
+      },
+      {
+        name: 'Social Infrastructure',
+        definition:
+          'Empowers users to participate in governance, support others, and gain recognition within the community through collaborative and rewarding mechanisms.',
       },
     ],
   },

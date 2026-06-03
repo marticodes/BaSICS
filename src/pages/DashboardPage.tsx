@@ -1,31 +1,38 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  AccessibilityDonut,
-  CategoryBar,
-  MatrixBar,
-} from '../components/charts/Charts'
+import { AccessibilityDonut, CategoryBar } from '../components/charts/Charts'
 import {
   accessibilityDistribution,
-  categoryCustomizationMatrix,
-  customizationDistribution,
   layerDistribution,
+  targetDistribution,
   toolsPerCategory,
 } from '../lib/aggregations'
 import { InfoTooltip } from '../components/InfoTooltip'
 import { legendSectionDescriptionByAnchor } from '../data/legend'
+import { layerForCluster } from '../lib/clusterCategoryMap'
+import { colorForLayer } from '../lib/chartColors'
+import { uniqueTargetLabels } from '../lib/filtering'
 import type { Tool } from '../types'
 
 export const DashboardPage = ({ tools }: { tools: Tool[] }) => {
-  const categoryData = useMemo(() => toolsPerCategory(tools), [tools])
+  const clusterData = useMemo(() => toolsPerCategory(tools), [tools])
+  const clusterBarColor = useMemo(() => {
+    const byCluster = new Map<string, string>()
+    return (cluster: string) => {
+      let color = byCluster.get(cluster)
+      if (!color) {
+        color = colorForLayer(layerForCluster(cluster, tools))
+        byCluster.set(cluster, color)
+      }
+      return color
+    }
+  }, [tools])
   const accessData = useMemo(() => accessibilityDistribution(tools), [tools])
-  const matrix = useMemo(() => categoryCustomizationMatrix(tools), [tools])
-  const customCounts = useMemo(() => customizationDistribution(tools), [tools])
-  const layers = useMemo(() => layerDistribution(tools), [tools])
-  const matrixKeys = useMemo(
-    () => [...new Set(tools.map((tool) => tool.customization))],
+  const categoryData = useMemo(
+    () => layerDistribution(tools).map((row) => ({ category: row.layer as string, value: row.value })),
     [tools],
   )
+  const targetData = useMemo(() => targetDistribution(tools), [tools])
 
   return (
     <section className="space-y-4">
@@ -39,10 +46,10 @@ export const DashboardPage = ({ tools }: { tools: Tool[] }) => {
           tooltip={legendSectionDescriptionByAnchor.clusters}
         />
         <Stat
-          label="Customization levels"
-          value={customCounts.length}
-          to="/legend?section=customization"
-          tooltip={legendSectionDescriptionByAnchor.customization}
+          label="Categories"
+          value={new Set(tools.map((tool) => tool.layer)).size}
+          to="/legend?section=category"
+          tooltip={legendSectionDescriptionByAnchor.category}
         />
         <Stat
           label="Accessibility types"
@@ -52,19 +59,27 @@ export const DashboardPage = ({ tools }: { tools: Tool[] }) => {
         />
         <Stat
           label="Target types"
-          value={new Set(tools.map((t) => t.target)).size}
+          value={uniqueTargetLabels(tools).length}
           to="/legend?section=target"
           tooltip={legendSectionDescriptionByAnchor.target}
         />
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
-        <ChartCard title="Tools per cluster"><CategoryBar data={categoryData as { category: string; value: number }[]} /></ChartCard>
-        <ChartCard title="Accessibility distribution"><AccessibilityDonut data={accessData as { accessibility: string; value: number }[]} /></ChartCard>
-        <ChartCard title="Cluster vs customization"><MatrixBar data={matrix} keys={matrixKeys} /></ChartCard>
-        <ChartCard title="Category distribution"><CategoryBar data={layers.map((r) => ({ category: r.layer as string, value: r.value }))} /></ChartCard>
-        {/* <ChartCard title="Cluster x category heatmap"><CategoryLayerHeatmap data={layerCategoryData} layers={layerKeys} /></ChartCard> */}
-        {/* <ChartCard title="Cluster treemap (option)"><CategoryTreemapLike data={categoryData as { category: string; value: number }[]} /></ChartCard> */}
-        {/* <ChartCard title="Category -> cluster flow (option)"><LayerCategoryFlowList data={flowData} /></ChartCard> */}
+        <ChartCard title="Tools per cluster">
+          <CategoryBar
+            data={clusterData as { category: string; value: number }[]}
+            getBarColor={(cluster) => clusterBarColor(cluster)}
+          />
+        </ChartCard>
+        <ChartCard title="Accessibility distribution">
+          <AccessibilityDonut data={accessData as { accessibility: string; value: number }[]} />
+        </ChartCard>
+        <ChartCard title="Category distribution">
+          <CategoryBar data={categoryData} />
+        </ChartCard>
+        <ChartCard title="Target distribution">
+          <CategoryBar data={targetData} />
+        </ChartCard>
       </div>
     </section>
   )

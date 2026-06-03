@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { filterTools } from '../filtering'
-import { toolsPerCategory } from '../aggregations'
+import { colorForLayer } from '../chartColors'
+import { filterTools, formatTargetLabel, splitMultiValue } from '../filtering'
+import { targetDistribution, toolsPerCategory } from '../aggregations'
 import type { Filters, Tool } from '../../types'
 
 const tools: Tool[] = [
@@ -64,5 +65,48 @@ describe('toolsPerCategory', () => {
         { category: 'Visibility', value: 1 },
       ]),
     )
+  })
+})
+
+describe('colorForLayer', () => {
+  it('maps dataset layer spellings to chart colors', () => {
+    expect(colorForLayer('Social infrastructure')).toBe('#f43f5e')
+    expect(colorForLayer('Standards and rules')).toBe('#10b981')
+    expect(colorForLayer('Social Infrastructure')).toBe('#f43f5e')
+  })
+})
+
+describe('splitMultiValue', () => {
+  it('splits comma- and plus-separated values', () => {
+    expect(splitMultiValue('Content, User')).toEqual(['Content', 'User'])
+    expect(splitMultiValue('Feed + User')).toEqual(['Feed', 'User'])
+    expect(splitMultiValue('User +')).toEqual(['User'])
+    expect(splitMultiValue('Feed + User, Content')).toEqual(['Feed', 'User', 'Content'])
+  })
+})
+
+describe('formatTargetLabel', () => {
+  it('normalizes multi-target values to a sorted compound label', () => {
+    expect(formatTargetLabel('User')).toBe('User')
+    expect(formatTargetLabel('Feed + User')).toBe('Feed + User')
+    expect(formatTargetLabel('User, Content')).toBe('Content + User')
+  })
+})
+
+describe('targetDistribution', () => {
+  it('counts compound labels and merges equivalent combinations', () => {
+    const multi: Tool[] = [
+      { ...tools[0], id: 'c', target: 'Feed + User' },
+      { ...tools[1], id: 'd', target: 'User, Content' },
+      { ...tools[0], id: 'e', target: 'Content + User' },
+    ]
+    const result = targetDistribution(multi)
+    expect(result).toEqual(
+      expect.arrayContaining([
+        { category: 'Feed + User', value: 1 },
+        { category: 'Content + User', value: 2 },
+      ]),
+    )
+    expect(result).toHaveLength(2)
   })
 })

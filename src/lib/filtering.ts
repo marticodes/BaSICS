@@ -13,11 +13,25 @@ export const createDefaultFilters = (): Filters => ({
 const inSet = (selected: string[], value: string) =>
   selected.length === 0 || selected.includes(value)
 
+/** Split compound field values (e.g. `Feed + User`, `Content, User`). */
 export const splitMultiValue = (value: string): string[] =>
   value
-    .split(',')
+    .split(/\s*(?:,|\+)\s*/)
     .map((part) => part.trim())
     .filter(Boolean)
+
+/** Single target as-is; multiple targets as sorted `A + B` (for charts and counts). */
+export const formatTargetLabel = (value: string): string => {
+  const tokens = splitMultiValue(value)
+  if (tokens.length === 0) return ''
+  if (tokens.length === 1) return tokens[0]
+  return [...tokens].sort((a, b) => a.localeCompare(b)).join(' + ')
+}
+
+export const uniqueTargetLabels = (tools: Tool[], key: keyof Pick<Tool, 'target'> = 'target'): string[] =>
+  [...new Set(tools.map((tool) => formatTargetLabel(tool[key])).filter(Boolean))].sort((a, b) =>
+    a.localeCompare(b),
+  )
 
 const matchesAnyToken = (selected: string[], value: string) => {
   if (selected.length === 0) return true

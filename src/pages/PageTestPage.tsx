@@ -1,9 +1,9 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { SelectionPie } from '../components/charts/Charts'
 import { TemporaryToolCreator } from '../components/TemporaryToolCreator'
 import { ToolDetailModal } from '../components/ToolDetailModal'
 import { useNewToolIdeas } from '../context/NewToolIdeasContext'
-import { tallyByField } from '../lib/aggregations'
+import { tallyByField, targetPieSegments } from '../lib/aggregations'
 import type { Tool } from '../types'
 
 const columnColors = [
@@ -22,7 +22,7 @@ type LayerGroup = {
 export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool[] }) => {
   const [openTool, setOpenTool] = useState<Tool | null>(null)
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set())
-  const { ideas: newToolIdeas, addIdea, updateIdea, removeIdea } = useNewToolIdeas()
+  const { ideas: newToolIdeas, addIdea, updateIdea, removeIdea, setSelectedTools } = useNewToolIdeas()
 
   const toggleSelect = useCallback((id: string) => {
     setSelectedIds((prev) => {
@@ -39,6 +39,10 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
     () => tools.filter((tool) => selectedIds.has(tool.id)),
     [tools, selectedIds],
   )
+
+  useEffect(() => {
+    setSelectedTools(selectedTools)
+  }, [selectedTools, setSelectedTools])
 
   const toolsForStats = useMemo(
     () => [...selectedTools, ...newToolIdeas],
@@ -75,13 +79,13 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
       .sort((a, b) => b.toolsCount - a.toolsCount)
   }, [tools])
 
-  const categoryPie = useMemo(() => tallyByField(toolsForStats, 'category'), [toolsForStats])
-  const targetPie = useMemo(() => tallyByField(toolsForStats, 'target'), [toolsForStats])
-  const layerPie = useMemo(() => tallyByField(toolsForStats, 'layer'), [toolsForStats])
+  const clusterPie = useMemo(() => tallyByField(toolsForStats, 'category'), [toolsForStats])
+  const categoryPie = useMemo(() => tallyByField(toolsForStats, 'layer'), [toolsForStats])
   const accessibilityPie = useMemo(
     () => tallyByField(toolsForStats, 'accessibility'),
     [toolsForStats],
   )
+  const targetPie = useMemo(() => targetPieSegments(toolsForStats), [toolsForStats])
 
   return (
     <section className="space-y-4">
@@ -196,10 +200,10 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
                   Statistics for {toolsForStats.length} tool{toolsForStats.length === 1 ? '' : 's'}
                   {newToolIdeas.length > 0 && selectedTools.length > 0 ? ' (includes new tool ideas)' : null}
                 </p>
-                <SelectionPie data={categoryPie} title="Cluster distribution" compact />
-                <SelectionPie data={targetPie} title="Target distribution" compact />
-                <SelectionPie data={layerPie} title="Layer distribution" compact />
+                <SelectionPie data={clusterPie} title="Cluster distribution" compact />
+                <SelectionPie data={categoryPie} title="Category distribution" compact />
                 <SelectionPie data={accessibilityPie} title="Tool accessibility" compact />
+                <SelectionPie data={targetPie} title="Target distribution" compact />
               </div>
             )}
           </div>

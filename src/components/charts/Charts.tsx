@@ -2,6 +2,7 @@ import {
   Bar,
   BarChart,
   Cell,
+  LabelList,
   Pie,
   PieChart,
   ResponsiveContainer,
@@ -9,16 +10,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
-
-const colors = ['#4f46e5', '#0ea5e9', '#f59e0b', '#10b981', '#ef4444', '#8b5cf6', '#14b8a6']
-const colorBySegment = (segment: string) => {
-  let hash = 0
-  for (let i = 0; i < segment.length; i += 1) {
-    hash = (hash << 5) - hash + segment.charCodeAt(i)
-    hash |= 0
-  }
-  return colors[Math.abs(hash) % colors.length]
-}
+import { colorForSegment, paletteColorAt } from '../../lib/chartColors'
 
 const pieSliceLabel = ({
   cx = 0,
@@ -58,22 +50,56 @@ const pieSliceLabel = ({
   )
 }
 
-export const CategoryBar = ({ data }: { data: { category: string; value: number }[] }) => (
+export const CategoryBar = ({
+  data,
+  getBarColor,
+}: {
+  data: { category: string; value: number }[]
+  /** When set, overrides default segment colors (e.g. cluster → parent category color). */
+  getBarColor?: (category: string, index: number) => string
+}) => (
   <ResponsiveContainer width="100%" height={280}>
-    <BarChart data={data}>
+    <BarChart data={data} margin={{ top: 16, right: 8, left: 0, bottom: 0 }}>
       <XAxis dataKey="category" hide />
       <YAxis />
-      <Tooltip formatter={(value) => [value, 'Tools']} />
-      <Bar dataKey="value" fill="#4f46e5" radius={[8, 8, 0, 0]} />
+      <Tooltip
+        formatter={(value) => [value, 'Tools']}
+        labelFormatter={(_, payload) =>
+          String((payload?.[0]?.payload as { category?: string } | undefined)?.category ?? '')
+        }
+      />
+      <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+        {data.map((row, idx) => (
+          <Cell
+            key={row.category}
+            fill={getBarColor ? getBarColor(row.category, idx) : colorForSegment(row.category, idx)}
+          />
+        ))}
+        <LabelList
+          dataKey="value"
+          position="top"
+          className="fill-slate-800 text-xs font-semibold"
+        />
+      </Bar>
     </BarChart>
   </ResponsiveContainer>
 )
 
 export const AccessibilityDonut = ({ data }: { data: { accessibility: string; value: number }[] }) => (
   <ResponsiveContainer width="100%" height={280}>
-    <PieChart>
-      <Pie data={data} dataKey="value" nameKey="accessibility" innerRadius={60} outerRadius={95}>
-        {data.map((_, idx) => <Cell key={idx} fill={colors[idx % colors.length]} />)}
+    <PieChart margin={{ top: 4, right: 4, bottom: 4, left: 4 }}>
+      <Pie
+        data={data}
+        dataKey="value"
+        nameKey="accessibility"
+        innerRadius={72}
+        outerRadius={118}
+        label={pieSliceLabel}
+        labelLine={false}
+      >
+        {data.map((row, idx) => (
+          <Cell key={row.accessibility} fill={colorForSegment(row.accessibility, idx)} />
+        ))}
       </Pie>
       <Tooltip />
     </PieChart>
@@ -115,7 +141,7 @@ export const SelectionPie = ({
                 labelLine={false}
               >
                 {data.map((row) => (
-                  <Cell key={row.segment} fill={colorBySegment(row.segment)} />
+                  <Cell key={row.segment} fill={colorForSegment(row.segment)} />
                 ))}
               </Pie>
               <Tooltip />
@@ -129,7 +155,7 @@ export const SelectionPie = ({
                   <span className="inline-flex items-center gap-2">
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ backgroundColor: colorBySegment(row.segment) }}
+                      style={{ backgroundColor: colorForSegment(row.segment) }}
                       aria-hidden
                     />
                     <span>{row.segment}</span>
@@ -154,7 +180,7 @@ export const MatrixBar = ({ data, keys }: { data: Record<string, string | number
       <YAxis />
       <Tooltip />
       {keys.map((key, idx) => (
-        <Bar key={key} stackId="a" dataKey={key} fill={colors[idx % colors.length]} />
+        <Bar key={key} stackId="a" dataKey={key} fill={paletteColorAt(idx)} />
       ))}
     </BarChart>
   </ResponsiveContainer>
@@ -219,7 +245,7 @@ export const CategoryTreemapLike = ({ data }: { data: { category: string; value:
           <article
             key={item.category}
             className="rounded-lg p-2 text-white"
-            style={{ backgroundColor: colors[idx % colors.length], minHeight }}
+            style={{ backgroundColor: paletteColorAt(idx), minHeight }}
           >
             <p className="text-xs opacity-90">{item.category}</p>
             <p className="text-xl font-bold">{item.value}</p>

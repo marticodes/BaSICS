@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react'
 import { SelectionPie } from '../components/charts/Charts'
 import { ToolDetailModal } from '../components/ToolDetailModal'
-import { tallyByField } from '../lib/aggregations'
+import { tallyByField, targetPieSegments } from '../lib/aggregations'
 import type { Tool } from '../types'
 
 /** Four fixed colors from Category Explorer (indigo → emerald → amber → rose). */
@@ -56,7 +56,7 @@ export const ToolMapPage = ({ tools, allTools }: { tools: Tool[]; allTools: Tool
     () => tallyByField(selectedTools, 'category'),
     [selectedTools],
   )
-  const targetPie = useMemo(() => tallyByField(selectedTools, 'target'), [selectedTools])
+  const targetPie = useMemo(() => targetPieSegments(selectedTools), [selectedTools])
   const accessibilityPie = useMemo(
     () => tallyByField(selectedTools, 'accessibility'),
     [selectedTools],

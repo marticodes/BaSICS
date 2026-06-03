@@ -5,8 +5,8 @@ import { legendSections, toLegendAnchorId } from '../data/legend'
 
 const clustersSection = legendSections.find((s) => s.title === 'Clusters')
 const targetSection = legendSections.find((s) => s.title === 'Target')
-const sidebarSections = legendSections.filter(
-  (s) => s.title !== 'Clusters' && s.title !== 'Target',
+const companionSections = legendSections.filter((s) =>
+  ['Category', 'Tool Accessibility', 'Tool Persistence'].includes(s.title),
 )
 
 const LegendTable = ({ section }: { section: LegendSection }) => (
@@ -92,7 +92,7 @@ export const LegendPage = () => {
             <LegendTable section={clustersSection} />
           </div>
           <div className="flex min-w-0 flex-col gap-4 lg:col-span-1">
-            {sidebarSections.map((section) => (
+            {companionSections.map((section) => (
               <LegendTable key={section.title} section={section} />
             ))}
           </div>

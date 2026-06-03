@@ -1,4 +1,4 @@
-import { splitMultiValue } from './filtering'
+import { formatTargetLabel, splitMultiValue } from './filtering'
 import type { Group, Tool } from '../types'
 
 const tally = (values: string[]) => {
@@ -19,6 +19,15 @@ export const accessibilityDistribution = (tools: Tool[]) =>
   toRows(tally(tools.map((t) => t.accessibility)), 'accessibility')
 
 export const layerDistribution = (tools: Tool[]) => toRows(tally(tools.map((t) => t.layer)), 'layer')
+
+export const targetDistribution = (tools: Tool[]) =>
+  toRows(
+    tally(tools.map((t) => formatTargetLabel(t.target)).filter(Boolean)),
+    'category',
+  ) as { category: string; value: number }[]
+
+export const targetPieSegments = (tools: Tool[]) =>
+  targetDistribution(tools).map(({ category, value }) => ({ segment: category, value }))
 
 export const customizationDistribution = (tools: Tool[]) =>
   toRows(tally(tools.map((t) => t.customization)), 'customization')

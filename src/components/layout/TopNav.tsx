@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useNewToolIdeas } from '../../context/NewToolIdeasContext'
-import { downloadNewToolIdeas } from '../../lib/exportNewToolIdeas'
+import { downloadToolMapExport } from '../../lib/exportNewToolIdeas'
 
 const links = [
   ['/', 'Dashboard'],
@@ -22,8 +22,8 @@ const DownloadIcon = () => (
 )
 
 export const TopNav = () => {
-  const { ideas } = useNewToolIdeas()
-  const hasIdeas = ideas.length > 0
+  const { ideas, selectedTools } = useNewToolIdeas()
+  const canDownload = ideas.length > 0 || selectedTools.length > 0
 
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
@@ -43,18 +43,18 @@ export const TopNav = () => {
         ))}
         <button
           type="button"
-          onClick={() => downloadNewToolIdeas(ideas)}
-          disabled={!hasIdeas}
+          onClick={() => downloadToolMapExport(ideas, selectedTools)}
+          disabled={!canDownload}
           className="ml-auto flex size-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700 disabled:cursor-not-allowed disabled:opacity-40"
           title={
-            hasIdeas
-              ? `Download ${ideas.length} new tool idea${ideas.length === 1 ? '' : 's'} as JSON`
-              : 'Create a new tool idea on Tool Map to enable download'
+            canDownload
+              ? `Download ${selectedTools.length} selected tool${selectedTools.length === 1 ? '' : 's'} and ${ideas.length} new tool idea${ideas.length === 1 ? '' : 's'}`
+              : 'Select tools or create a new tool idea on Tool Map to enable download'
           }
           aria-label={
-            hasIdeas
-              ? `Download ${ideas.length} new tool ideas`
-              : 'Download new tool ideas (none created yet)'
+            canDownload
+              ? 'Download tool map selection and new tool ideas'
+              : 'Download tool map data (nothing to export yet)'
           }
         >
           <DownloadIcon />

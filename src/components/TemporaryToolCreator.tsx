@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { layerForCluster } from '../lib/clusterCategoryMap'
 import { splitMultiValue, uniqueSplitValues, uniqueValues } from '../lib/filtering'
 import type { Tool } from '../types'
 
@@ -7,7 +8,7 @@ export type TemporaryToolDraft = {
   name: string
   description: string
   accessibilities: string[]
-  layer: string
+  cluster: string
   targets: string[]
 }
 
@@ -15,7 +16,7 @@ const emptyDraft = (): TemporaryToolDraft => ({
   name: '',
   description: '',
   accessibilities: [],
-  layer: '',
+  cluster: '',
   targets: [],
 })
 
@@ -23,19 +24,23 @@ const toolToDraft = (tool: Tool): TemporaryToolDraft => ({
   name: tool.name,
   description: tool.description,
   accessibilities: splitMultiValue(tool.accessibility),
-  layer: tool.layer,
+  cluster: tool.category,
   targets: splitMultiValue(tool.target),
 })
 
-export const buildTemporaryTool = (draft: TemporaryToolDraft, existingId?: string): Tool => ({
+export const buildTemporaryTool = (
+  draft: TemporaryToolDraft,
+  allTools: Tool[],
+  existingId?: string,
+): Tool => ({
   id: existingId ?? `temp-${crypto.randomUUID()}`,
   name: draft.name.trim(),
   description: draft.description.trim(),
   accessibility: draft.accessibilities.join(', '),
   customization: '',
   target: draft.targets.join(', '),
-  category: 'Custom',
-  layer: draft.layer,
+  category: draft.cluster,
+  layer: layerForCluster(draft.cluster, allTools),
   examplePlatforms: '',
   persistence: '',
   imageUrl: '',
@@ -132,12 +137,14 @@ export const TemporaryToolCreator = ({ allTools, ideas, onCreate, onUpdate, onRe
 
   const options = useMemo(
     () => ({
-      layers: uniqueValues(allTools, 'layer'),
+      clusters: uniqueValues(allTools, 'category'),
       targets: uniqueSplitValues(allTools, 'target'),
       accessibilities: uniqueSplitValues(allTools, 'accessibility'),
     }),
     [allTools],
   )
+
+  const assignedCategory = draft.cluster ? layerForCluster(draft.cluster, allTools) : ''
 
   const update = (patch: Partial<TemporaryToolDraft>) => {
     setDraft((prev) => ({ ...prev, ...patch }))
@@ -188,9 +195,9 @@ export const TemporaryToolCreator = ({ allTools, ideas, onCreate, onUpdate, onRe
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
     if (!draft.name.trim()) return
-    if (draft.accessibilities.length === 0 || !draft.layer || draft.targets.length === 0) return
+    if (draft.accessibilities.length === 0 || !draft.cluster || draft.targets.length === 0) return
 
-    const tool = buildTemporaryTool(draft, editingId ?? undefined)
+    const tool = buildTemporaryTool(draft, allTools, editingId ?? undefined)
     if (editingId) onUpdate(tool)
     else onCreate(tool)
     closeModal()
@@ -199,7 +206,7 @@ export const TemporaryToolCreator = ({ allTools, ideas, onCreate, onUpdate, onRe
   const canSubmit =
     draft.name.trim().length > 0 &&
     draft.accessibilities.length > 0 &&
-    draft.layer.length > 0 &&
+    draft.cluster.length > 0 &&
     draft.targets.length > 0
 
   const isEditing = editingId !== null
@@ -275,12 +282,19 @@ export const TemporaryToolCreator = ({ allTools, ideas, onCreate, onUpdate, onRe
                   onToggle={(value) => toggleList('accessibilities', value)}
                 />
                 <SingleSelect
-                  title="Layer"
-                  name="new-tool-idea-layer"
-                  values={options.layers}
-                  selected={draft.layer}
-                  onSelect={(value) => update({ layer: value })}
+                  title="Cluster"
+                  name="new-tool-idea-cluster"
+                  values={options.clusters}
+                  selected={draft.cluster}
+                  onSelect={(value) => update({ cluster: value })}
                 />
+                {assignedCategory ? (
+                  <p className="rounded-md border border-indigo-100 bg-indigo-50/80 px-2.5 py-2 text-xs text-slate-700">
+                    <span className="font-semibold uppercase tracking-wide text-indigo-800">Category</span>
+                    <span className="mt-0.5 block font-medium text-slate-900">{assignedCategory}</span>
+                    <span className="mt-0.5 block text-slate-500">Set automatically from the selected cluster.</span>
+                  </p>
+                ) : null}
                 <MultiSelect
                   title="Target"
                   values={options.targets}
@@ -354,9 +368,15 @@ export const TemporaryToolCreator = ({ allTools, ideas, onCreate, onUpdate, onRe
                     </dd>
                   </div>
                   <div className="rounded-full bg-white px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">
-                    <dt className="sr-only">Layer</dt>
+                    <dt className="sr-only">Cluster</dt>
                     <dd>
-                      <span className="font-medium text-slate-500">Layer:</span> {tool.layer}
+                      <span className="font-medium text-slate-500">Cluster:</span> {tool.category}
+                    </dd>
+                  </div>
+                  <div className="rounded-full bg-white px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">
+                    <dt className="sr-only">Category</dt>
+                    <dd>
+                      <span className="font-medium text-slate-500">Category:</span> {tool.layer}
                     </dd>
                   </div>
                   <div className="rounded-full bg-white px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">
