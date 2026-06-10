@@ -176,7 +176,7 @@ export const PageTestPage = ({ tools, allTools }: { tools: Tool[]; allTools: Too
         </div>
 
         <aside
-          className="flex h-fit flex-col gap-0 xl:sticky xl:top-24"
+          className="flex h-fit max-h-[calc(100vh-7rem)] flex-col gap-0 self-start overflow-y-auto overscroll-contain pb-[min(45vh,28rem)] [scroll-behavior:smooth] [scrollbar-gutter:stable] xl:sticky xl:top-24"
           aria-label="Selection statistics"
         >
           <div className="rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm">

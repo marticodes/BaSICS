@@ -133,29 +133,14 @@ export const legendSections: LegendSection[] = [
           'Stream of content that users see when they log into their accounts or visit a particular platform.',
       },
       {
-        name: 'Voice',
-        definition:
-          'Voice-based content, especially real-time interactions between users.',
-      },
-      {
-        name: 'Text',
-        definition:
-          'Textual content such as posts, comments, messages, captions, and other written communication.',
-      },
-      {
-        name: 'Media',
-        definition:
-          'Various forms of multimedia content, including images, videos, GIFs, memes, and other visual or audiovisual content.',
-      },
-      {
         name: 'User',
         definition:
           'Actions, activity or content related to individual users, including their posts, comments, messages, profiles, and interactions.',
       },
       {
-        name: 'Spam',
+        name: 'Content',
         definition:
-          'Irrelevant or repetitive content. Spam can include automated or malicious messages, advertisements, or repetitive, low-quality posts.',
+          'Any posting on the platform, including photos, videos, comments, messages, etc.',
       },
     ],
   },
